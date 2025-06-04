@@ -54,7 +54,7 @@ export class TokenSaleQuantity {
   @ValidateNested()
   @Type(() => TokenClassKey)
   @IsNotEmpty()
-  public tokenClassKey: TokenClassKey;
+  public tokenClassKey!: TokenClassKey;
 
   @JSONSchema({
     description: "Quantity of tokens to be received."
@@ -63,7 +63,7 @@ export class TokenSaleQuantity {
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 }
 
 // Chain objects
@@ -78,20 +78,20 @@ export class TokenSale extends ChainObject {
   })
   @ChainKey({ position: 0 })
   @IsNumber()
-  public created: number;
+  public created!: number;
 
   @JSONSchema({
     description: "Transaction ID"
   })
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public txid: string;
+  public txid!: string;
 
   @JSONSchema({
     description: "Token sale ID"
   })
   @IsNotEmpty()
-  public tokenSaleId: string;
+  public tokenSaleId!: string;
 
   @JSONSchema({
     description: "Tokens and quantities to be sold"
@@ -99,7 +99,7 @@ export class TokenSale extends ChainObject {
   @ValidateNested({ each: true })
   @Type(() => TokenSaleQuantity)
   @ArrayNotEmpty()
-  public selling: Array<TokenSaleQuantity>;
+  public selling!: Array<TokenSaleQuantity>;
 
   @JSONSchema({
     description: "Tokens and quantities to be received"
@@ -107,19 +107,19 @@ export class TokenSale extends ChainObject {
   @ValidateNested({ each: true })
   @Type(() => TokenSaleQuantity)
   @ArrayNotEmpty()
-  public cost: Array<TokenSaleQuantity>;
+  public cost!: Array<TokenSaleQuantity>;
 
   @JSONSchema({
     description: "User who created the sale"
   })
   @IsUserAlias()
-  public owner: UserAlias;
+  public owner!: UserAlias;
 
   @JSONSchema({
     description: "Ids of each sale fullfillment"
   })
   @IsNotEmpty()
-  public fulfillmentIds: Array<string>;
+  public fulfillmentIds!: Array<string>;
 
   @JSONSchema({
     description: "Token quantity of items being sold"
@@ -127,7 +127,7 @@ export class TokenSale extends ChainObject {
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   @JSONSchema({
     description: "Quantity of items sold"
@@ -135,21 +135,21 @@ export class TokenSale extends ChainObject {
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public quantityFulfilled: BigNumber;
+  public quantityFulfilled!: BigNumber;
 
   @JSONSchema({
     description: "Timestamp when sale ends"
   })
   @Min(0)
   @IsInt()
-  public end: number;
+  public end!: number;
 
   @JSONSchema({
     description: "Timestamp when sale starts"
   })
   @Min(0)
   @IsInt()
-  public start: number;
+  public start!: number;
 
   @Exclude()
   public static INDEX_KEY = "GCTTS";
@@ -160,28 +160,28 @@ export class TokenSaleTokenSold extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 4 })
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public quantity: string;
+  public quantity!: string;
 
   @ChainKey({ position: 5 })
   @IsNotEmpty()
-  public tokenSaleId: string;
+  public tokenSaleId!: string;
 }
 
 export class TokenSaleTokenCost extends ChainObject {
@@ -189,28 +189,28 @@ export class TokenSaleTokenCost extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 4 })
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public quantity: string;
+  public quantity!: string;
 
   @ChainKey({ position: 5 })
   @IsNotEmpty()
-  public tokenSaleId: string;
+  public tokenSaleId!: string;
 }
 
 export class TokenSaleOwner extends ChainObject {
@@ -218,11 +218,11 @@ export class TokenSaleOwner extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  public owner: UserAlias;
+  public owner!: UserAlias;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public tokenSaleId: string;
+  public tokenSaleId!: string;
 }
 
 export class TokenSaleMintAllowance extends ChainObject {
@@ -230,32 +230,32 @@ export class TokenSaleMintAllowance extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public tokenSaleId: string;
+  public tokenSaleId!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 4 })
   @IsNotEmpty()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 5 })
   @BigNumberIsPositive()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   @ChainKey({ position: 6 })
   @IsNotEmpty()
-  public allowanceObjectKey: string;
+  public allowanceObjectKey!: string;
 }
 
 export class TokenSaleFulfillment extends ChainObject {
@@ -263,19 +263,19 @@ export class TokenSaleFulfillment extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public tokenSaleId: string;
+  public tokenSaleId!: string;
 
   @ChainKey({ position: 1 })
   @IsUserAlias()
-  public fulfilledBy: UserAlias;
+  public fulfilledBy!: UserAlias;
 
   @ChainKey({ position: 2 })
   @IsPositive()
-  public created: number;
+  public created!: number;
 
   @BigNumberIsPositive()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 }
 
 // Chain DTOs
@@ -305,7 +305,7 @@ export class CreateTokenSaleDto extends SubmitCallDTO {
   @Type(() => TokenSaleQuantity)
   @ArrayMinSize(1)
   @ArrayUnique()
-  public selling: Array<TokenSaleQuantity>;
+  public selling!: Array<TokenSaleQuantity>;
 
   @JSONSchema({
     description: "A list of tokens to be paid to the seller."
@@ -314,7 +314,7 @@ export class CreateTokenSaleDto extends SubmitCallDTO {
   @Type(() => TokenSaleQuantity)
   @ArrayMinSize(1)
   @ArrayUnique()
-  public cost: Array<TokenSaleQuantity>;
+  public cost!: Array<TokenSaleQuantity>;
 
   @JSONSchema({
     description: "How many sale items can be purchased."
@@ -322,7 +322,7 @@ export class CreateTokenSaleDto extends SubmitCallDTO {
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   @JSONSchema({
     description:
@@ -354,7 +354,7 @@ export class ExpectedTokenSale {
   @Type(() => TokenSaleQuantity)
   @ArrayMinSize(1)
   @ArrayUnique()
-  public selling: Array<TokenSaleQuantity>;
+  public selling!: Array<TokenSaleQuantity>;
 
   @JSONSchema({
     description:
@@ -364,7 +364,7 @@ export class ExpectedTokenSale {
   @Type(() => TokenSaleQuantity)
   @ArrayMinSize(1)
   @ArrayUnique()
-  public cost: Array<TokenSaleQuantity>;
+  public cost!: Array<TokenSaleQuantity>;
 }
 
 @JSONSchema({
@@ -375,7 +375,7 @@ export class FulfillTokenSaleDto extends SubmitCallDTO {
     description: "Token sale ID to be filled"
   })
   @IsNotEmpty()
-  public tokenSaleId: string;
+  public tokenSaleId!: string;
 
   @JSONSchema({
     description: "Expected token sale to be validated before filling the swap."
@@ -400,7 +400,7 @@ export class FulfillTokenSaleDto extends SubmitCallDTO {
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 }
 
 export class RemoveTokenSaleDto extends SubmitCallDTO {
@@ -408,7 +408,7 @@ export class RemoveTokenSaleDto extends SubmitCallDTO {
     description: "Token sale ID to be removed."
   })
   @IsNotEmpty()
-  public readonly tokenSaleId: string;
+  public readonly tokenSaleId!: string;
 }
 
 @JSONSchema({
@@ -456,7 +456,7 @@ export class FetchTokenSalesWithPaginationResponse extends ChainCallDTO {
 
   @ValidateNested({ each: true })
   @Type(() => TokenSale)
-  public results: TokenSale[];
+  public results!: TokenSale[];
 }
 
 export class FetchTokenSaleByIdDto extends ChainCallDTO {
@@ -464,7 +464,7 @@ export class FetchTokenSaleByIdDto extends ChainCallDTO {
     description: "Token sale ID."
   })
   @IsNotEmpty()
-  public tokenSaleId: string;
+  public tokenSaleId!: string;
 }
 
 @JSONSchema({
@@ -476,7 +476,7 @@ export class FetchTokenSaleByIdDto extends ChainCallDTO {
 })
 export class EnsureTokenSaleIndexingDto extends ChainCallDTO {
   @ArrayNotEmpty()
-  tokenSaleIds: string[];
+  tokenSaleIds!: string[];
 }
 
 @JSONSchema({
@@ -485,10 +485,10 @@ export class EnsureTokenSaleIndexingDto extends ChainCallDTO {
 })
 export class EnsureTokenSaleIndexingResponse extends ChainCallDTO {
   @IsBoolean()
-  noOp: boolean;
+  noOp!: boolean;
 
   @ArrayMinSize(0)
-  writes: ChainObject[];
+  writes!: ChainObject[];
 }
 
 // Errors

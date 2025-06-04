@@ -56,22 +56,22 @@ import { ChainCallDTO, SubmitCallDTO } from "./dtos";
 })
 export class FeePropertiesDto extends ChainCallDTO {
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @JSONSchema({
     description:
@@ -103,7 +103,7 @@ export class FeeAuthorizationDto extends SubmitCallDTO {
     description: "A user authorizing a GalaChainFee payment."
   })
   @IsUserRef()
-  authority: UserRef;
+  authority!: UserRef;
 
   @JSONSchema({
     description: "Token Quantity authorized with this fee."
@@ -111,7 +111,7 @@ export class FeeAuthorizationDto extends SubmitCallDTO {
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 }
 
 @JSONSchema({
@@ -123,25 +123,25 @@ export class FeeAuthorizationResDto extends ChainCallDTO {
   @JSONSchema({
     description: "A serialized FeeAuthorizationDto signed by the authorizing / spending user."
   })
-  authorization: string;
+  authorization!: string;
 
   @JSONSchema({
     description: "The user that authorized the GalaChainFee payment."
   })
   @IsUserAlias()
-  authority: UserAlias;
+  authority!: UserAlias;
 
   @JSONSchema({
     description: "Unix Timestamp of fee authorization chain object creation."
   })
   @IsNotEmpty()
-  public created: number;
+  public created!: number;
 
   @JSONSchema({
     description: "Transaction ID where authorization was granted for fee spend."
   })
   @IsNotEmpty()
-  public txId: string;
+  public txId!: string;
 
   @JSONSchema({
     description: "Token Quantity authorized with this fee."
@@ -149,14 +149,14 @@ export class FeeAuthorizationResDto extends ChainCallDTO {
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 
   @JSONSchema({
     description: "Chain Key of the Fee Authorization Chain Object newly saved in World State."
   })
   @IsString()
   @IsNotEmpty()
-  feeAuthorizationKey: string;
+  feeAuthorizationKey!: string;
 }
 
 @JSONSchema({
@@ -250,7 +250,7 @@ export class FetchFeeAuthorizationsResDto extends ChainCallDTO {
   @JSONSchema({ description: "List of fee authorizations." })
   @ValidateNested({ each: true })
   @Type(() => FeeAuthorization)
-  results: FeeAuthorization[];
+  results!: FeeAuthorization[];
 
   @JSONSchema({ description: "Next page bookmark for large result sets." })
   @IsOptional()
@@ -345,12 +345,12 @@ export class FetchFeeChannelPaymentsDto extends ChainCallDTO {
 })
 export class FeeChannelPaymentKeyValueResult extends ChainCallDTO {
   @JSONSchema({ description: "Chain key identifying object on chain." })
-  key: string;
+  key!: string;
 
   @JSONSchema({ description: "Chain key identifying object on chain." })
   @ValidateNested()
   @Type(() => FeeChannelPaymentReceipt)
-  value: FeeChannelPaymentReceipt;
+  value!: FeeChannelPaymentReceipt;
 }
 
 @JSONSchema({
@@ -360,7 +360,7 @@ export class FetchFeeChannelPaymentsResDto extends ChainCallDTO {
   @JSONSchema({ description: "List of fee payment receipts." })
   @ValidateNested({ each: true })
   @Type(() => FeeChannelPaymentKeyValueResult)
-  results: FeeChannelPaymentKeyValueResult[];
+  results!: FeeChannelPaymentKeyValueResult[];
 
   @JSONSchema({ description: "Next page bookmark." })
   @IsOptional()
@@ -455,12 +455,12 @@ export class FetchFeeCreditReceiptsDto extends ChainCallDTO {
 })
 export class FeeCreditReceiptKeyValueResult extends ChainCallDTO {
   @JSONSchema({ description: "Chain key identifying object on chain." })
-  key: string;
+  key!: string;
 
   @JSONSchema({ description: "Chain key identifying object on chain." })
   @ValidateNested()
   @Type(() => FeeChannelPaymentReceipt)
-  value: FeeBalanceCreditReceipt;
+  value!: FeeBalanceCreditReceipt;
 }
 
 @JSONSchema({
@@ -470,7 +470,7 @@ export class FetchFeeCreditReceiptsResponse extends ChainCallDTO {
   @JSONSchema({ description: "List of fee payment receipts." })
   @ValidateNested({ each: true })
   @Type(() => FeeCreditReceiptKeyValueResult)
-  results: FeeCreditReceiptKeyValueResult[];
+  results!: FeeCreditReceiptKeyValueResult[];
 
   @JSONSchema({ description: "Next page bookmark." })
   @IsOptional()
@@ -495,7 +495,7 @@ export class FetchFeeScheduleResDto extends ChainCallDTO {
   @JSONSchema({ description: "List of fee code definitions." })
   @ValidateNested({ each: true })
   @Type(() => FeeCodeDefinition)
-  results: FeeCodeDefinition[];
+  results!: FeeCodeDefinition[];
 
   @JSONSchema({ description: "Next page bookmark" })
   @IsOptional()
@@ -533,12 +533,12 @@ export class FetchFeePendingBalancesDto extends ChainCallDTO {
 })
 export class FeePendingBalanceKeyValueResult extends ChainCallDTO {
   @JSONSchema({ description: "Chain key identifying object on chain." })
-  key: string;
+  key!: string;
 
   @JSONSchema({ description: "Chain key identifying object on chain." })
   @ValidateNested()
   @Type(() => FeePendingBalance)
-  value: FeePendingBalance;
+  value!: FeePendingBalance;
 }
 
 @JSONSchema({
@@ -548,7 +548,7 @@ export class FetchFeePendingBalancesResDto extends ChainCallDTO {
   @JSONSchema({ description: "List of fee pending balances." })
   @ValidateNested({ each: true })
   @Type(() => FeePendingBalanceKeyValueResult)
-  results: FeePendingBalanceKeyValueResult[];
+  results!: FeePendingBalanceKeyValueResult[];
 
   @JSONSchema({ description: "Next page bookmark." })
   @IsOptional()
@@ -590,36 +590,36 @@ export class FeeBalanceSettlementDto extends ChainCallDTO {
 export class FeeCodeDefinitionDto extends SubmitCallDTO {
   @IsString()
   @IsNotEmpty()
-  public feeCode: string;
+  public feeCode!: string;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public feeThresholdUses: BigNumber;
+  public feeThresholdUses!: BigNumber;
 
   @IsNumber()
-  public feeThresholdTimePeriod: number;
+  public feeThresholdTimePeriod!: number;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public baseQuantity: BigNumber;
+  public baseQuantity!: BigNumber;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public maxQuantity: BigNumber;
+  public maxQuantity!: BigNumber;
 
   @JSONSchema({
     description: "Type of FeeAccelerationRate."
   })
   @EnumProperty(FeeAccelerationRateType)
-  public feeAccelerationRateType: FeeAccelerationRateType;
+  public feeAccelerationRateType!: FeeAccelerationRateType;
 
   @IsNotEmpty()
   @BigNumberProperty()
-  public feeAccelerationRate: BigNumber;
+  public feeAccelerationRate!: BigNumber;
 
   @JSONSchema({
     description:
@@ -646,7 +646,7 @@ export class FeeCodeSplitFormulaDto extends SubmitCallDTO {
   })
   @IsString()
   @IsNotEmpty()
-  public feeCode: string;
+  public feeCode!: string;
 
   @JSONSchema({
     description:
@@ -656,7 +656,7 @@ export class FeeCodeSplitFormulaDto extends SubmitCallDTO {
   @IsNumber()
   @Min(0)
   @Max(1)
-  public burnPercentage: number;
+  public burnPercentage!: number;
 
   @JSONSchema({
     description:
@@ -666,7 +666,7 @@ export class FeeCodeSplitFormulaDto extends SubmitCallDTO {
   @ArrayMinSize(0)
   @ValidateNested({ each: true })
   @Type(() => FeeCodeTransferPercentage)
-  public transferPercentages: FeeCodeTransferPercentage[];
+  public transferPercentages!: FeeCodeTransferPercentage[];
 }
 
 @JSONSchema({
@@ -684,7 +684,7 @@ export class FeeVerificationDto extends SubmitCallDTO {
   @JSONSchema({
     description: "A serialized FeeAuthorizationDto signed by the authorizing / spending user."
   })
-  authorization: string;
+  authorization!: string;
 
   @JSONSchema({
     description:
@@ -692,19 +692,19 @@ export class FeeVerificationDto extends SubmitCallDTO {
       "which signed the DTO provided in the `authorization` property."
   })
   @IsUserRef()
-  authority: UserRef;
+  authority!: UserRef;
 
   @JSONSchema({
     description: "Unix Timestamp of fee authorization chain object creation."
   })
   @IsNotEmpty()
-  public created: number;
+  public created!: number;
 
   @JSONSchema({
     description: "Transaction ID where authorization was granted for fee spend."
   })
   @IsNotEmpty()
-  public txId: string;
+  public txId!: string;
 
   @JSONSchema({
     description: "Token Quantity authorized with this fee."
@@ -712,14 +712,14 @@ export class FeeVerificationDto extends SubmitCallDTO {
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 
   @JSONSchema({
     description: "Chain Key referencing Fee Authorization Chain Object saved in World State."
   })
   @IsString()
   @IsNotEmpty()
-  feeAuthorizationKey: string;
+  feeAuthorizationKey!: string;
 }
 
 @JSONSchema({
@@ -731,12 +731,12 @@ export class FetchFeeThresholdUsesDto extends ChainCallDTO {
   })
   @IsString()
   @IsNotEmpty()
-  public feeCode: string;
+  public feeCode!: string;
 
   @JSONSchema({ description: "user who paid this fee." })
   @IsString()
   @IsUserRef()
-  public user: UserRef;
+  public user!: UserRef;
 }
 
 @JSONSchema({
@@ -748,25 +748,25 @@ export class FetchFeeThresholdUsesResDto extends ChainCallDTO {
   })
   @IsString()
   @IsNotEmpty()
-  public feeCode: string;
+  public feeCode!: string;
 
   @JSONSchema({ description: "user who paid this fee." })
   @IsString()
   @IsUserRef()
-  public user: UserRef;
+  public user!: UserRef;
 
   @JSONSchema({ description: "total cumulative uses of this fee." })
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public cumulativeUses: BigNumber;
+  public cumulativeUses!: BigNumber;
 
   @JSONSchema({ description: "total cumulative quantity of this fee." })
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public cumulativeFeeQuantity: BigNumber;
+  public cumulativeFeeQuantity!: BigNumber;
 }
 
 @JSONSchema({
@@ -799,12 +799,12 @@ export class FetchFeeThresholdUsesWithPaginationDto extends ChainCallDTO {
 })
 export class FeeThresholdUsesKeyValueResult extends ChainCallDTO {
   @JSONSchema({ description: "Chain key identifying object on chain." })
-  key: string;
+  key!: string;
 
   @JSONSchema({ description: "Chain key identifying object on chain." })
   @ValidateNested()
   @Type(() => ChainObject)
-  value: FeeThresholdUses;
+  value!: FeeThresholdUses;
 }
 
 @JSONSchema({
@@ -814,7 +814,7 @@ export class FetchFeeThresholdUsesWithPaginationResponse extends ChainCallDTO {
   @JSONSchema({ description: "List of FeeThresholdUses." })
   @ValidateNested({ each: true })
   @Type(() => FeeThresholdUsesKeyValueResult)
-  results: FeeThresholdUsesKeyValueResult[];
+  results!: FeeThresholdUsesKeyValueResult[];
 
   @JSONSchema({ description: "Next page bookmark." })
   @IsOptional()
@@ -834,7 +834,7 @@ export class ChainKeysDto extends SubmitCallDTO {
   @ArrayNotEmpty()
   @ArrayMaxSize(100000)
   @ArrayUnique()
-  chainKeys: string[];
+  chainKeys!: string[];
 }
 
 @JSONSchema({
@@ -842,12 +842,12 @@ export class ChainKeysDto extends SubmitCallDTO {
 })
 export class ChainKeyValueResult extends ChainCallDTO {
   @JSONSchema({ description: "Chain key identifying object on chain." })
-  key: string;
+  key!: string;
 
   @JSONSchema({ description: "Chain key identifying object on chain." })
   @ValidateNested()
   @Type(() => ChainObject)
-  value: ChainObject;
+  value!: ChainObject;
 }
 
 @JSONSchema({
@@ -857,7 +857,7 @@ export class FetchChainKeyValueObjectsWithPaginationResponse extends ChainCallDT
   @JSONSchema({ description: "List of FeeThresholdUses." })
   @ValidateNested({ each: true })
   @Type(() => ChainKeyValueResult)
-  results: ChainKeyValueResult[];
+  results!: ChainKeyValueResult[];
 
   @JSONSchema({ description: "Next page bookmark." })
   @IsOptional()
@@ -874,7 +874,7 @@ export class FeeBalanceSettlement extends ChainCallDTO {
   })
   @ValidateNested()
   @Type(() => FeePendingBalance)
-  balance: FeePendingBalance;
+  balance!: FeePendingBalance;
 
   @JSONSchema({
     description: "If the value was greater than 0, the credit receipt issued."
@@ -894,7 +894,7 @@ export class SettleFeeBalancesResponse extends ChainCallDTO {
   })
   @ValidateNested({ each: true })
   @Type(() => FeeBalanceSettlement)
-  results: FeeBalanceSettlement[];
+  results!: FeeBalanceSettlement[];
 }
 
 @JSONSchema({
@@ -906,7 +906,7 @@ export class SettleFeeCreditReceiptsResponse extends ChainCallDTO {
   })
   @ValidateNested({ each: true })
   @Type(() => FeeBalanceCreditReceipt)
-  results: FeeBalanceCreditReceipt[];
+  results!: FeeBalanceCreditReceipt[];
 }
 
 @JSONSchema({
@@ -918,7 +918,7 @@ export class SettleFeePaymentReceiptsResponse extends ChainCallDTO {
   })
   @ValidateNested({ each: true })
   @Type(() => FeeChannelPaymentReceipt)
-  results: FeeChannelPaymentReceipt[];
+  results!: FeeChannelPaymentReceipt[];
 }
 
 @JSONSchema({
@@ -930,7 +930,7 @@ export class FeeExemptionDto extends SubmitCallDTO {
   })
   @IsString()
   @IsUserRef()
-  user: UserRef;
+  user!: UserRef;
 
   @JSONSchema({
     description: "(Optional). If provided, the user's exemption will be limited to the provided fee codes."

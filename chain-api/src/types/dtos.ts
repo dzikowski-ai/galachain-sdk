@@ -289,17 +289,17 @@ export class ChainCallDTO {
 // It just makes uniqueKey required
 export class SubmitCallDTO extends ChainCallDTO {
   @IsNotEmpty()
-  public uniqueKey: string;
+  public uniqueKey!: string;
 }
 
 export class BatchOperationDto extends ChainCallDTO {
   @IsNotEmpty()
-  method: string;
+  method!: string;
 
   @IsNotEmpty()
   @ValidateNested()
   @Type(() => ChainCallDTO)
-  dto: ChainCallDTO;
+  dto!: ChainCallDTO;
 }
 
 export class BatchDto extends ChainCallDTO {
@@ -335,7 +335,7 @@ export class BatchDto extends ChainCallDTO {
   @ValidateNested({ each: true })
   @ArrayMinSize(1)
   @ArrayMaxSize(BatchDto.BATCH_SIZE_LIMIT)
-  operations: BatchOperationDto[];
+  operations!: BatchOperationDto[];
 }
 
 /**
@@ -345,7 +345,7 @@ export class BatchDto extends ChainCallDTO {
  */
 export class GetObjectDto extends ChainCallDTO {
   @IsNotEmpty()
-  public readonly objectId: string;
+  public readonly objectId!: string;
 }
 
 /**
@@ -355,7 +355,7 @@ export class GetObjectDto extends ChainCallDTO {
  */
 export class GetObjectHistoryDto extends ChainCallDTO {
   @IsNotEmpty()
-  public readonly objectId: string;
+  public readonly objectId!: string;
 }
 
 /**
@@ -393,7 +393,7 @@ export class DryRunDto extends ChainCallDTO {
    * "TransferToken"
    */
   @IsNotEmpty()
-  public readonly method: string;
+  public readonly method!: string;
 
   /**
    * @description
@@ -401,7 +401,7 @@ export class DryRunDto extends ChainCallDTO {
    * The identity used for the transaction simulation.
    */
   @IsNotEmpty()
-  public readonly callerPublicKey: string;
+  public readonly callerPublicKey!: string;
 
   /**
    * @description
@@ -429,7 +429,7 @@ export class DryRunResultDto extends ChainCallDTO {
    * The `GalaChainResponse` that would have occurred if the provided inputs had been
    * sent to the provided method, with a valid signature.
    */
-  public response: GalaChainResponse<unknown>;
+  public response!: GalaChainResponse<unknown>;
   /**
    * @description
    *
@@ -439,7 +439,7 @@ export class DryRunResultDto extends ChainCallDTO {
    * [Valid Transactions](https://hyperledger-fabric.readthedocs.io/en/release-2.5/smartcontract/smartcontract.html#valid-transactions)
    * for more details on the importantce of Read/Write sets.
    */
-  public writes: Record<string, string>;
+  public writes!: Record<string, string>;
   /**
    * @description
    *
@@ -449,7 +449,7 @@ export class DryRunResultDto extends ChainCallDTO {
    * [Valid Transactions](https://hyperledger-fabric.readthedocs.io/en/release-2.5/smartcontract/smartcontract.html#valid-transactions)
    * for more details on the importantce of Read/Write sets.
    */
-  public reads: Record<string, string>;
+  public reads!: Record<string, string>;
   /**
    * @description
    *
@@ -459,7 +459,7 @@ export class DryRunResultDto extends ChainCallDTO {
    * [Valid Transactions](https://hyperledger-fabric.readthedocs.io/en/release-2.5/smartcontract/smartcontract.html#valid-transactions)
    * for more details on the importantce of Read/Write sets.
    */
-  public deletes: Record<string, true>;
+  public deletes!: Record<string, true>;
 }
 
 /**
@@ -482,14 +482,14 @@ export class RegisterUserDto extends SubmitCallDTO {
     description: `Id of user to save public key for.`
   })
   @IsUserAlias()
-  user: UserAlias;
+  user!: UserAlias;
 
   /**
    * @description Public secp256k1 key (compact or non-compact, hex or base64).
    */
   @JSONSchema({ description: "Public secp256k1 key (compact or non-compact, hex or base64)." })
   @IsNotEmpty()
-  publicKey: string;
+  publicKey!: string;
 }
 
 /**
@@ -504,7 +504,7 @@ export class RegisterUserDto extends SubmitCallDTO {
 export class RegisterEthUserDto extends SubmitCallDTO {
   @JSONSchema({ description: "Public secp256k1 key (compact or non-compact, hex or base64)." })
   @IsNotEmpty()
-  publicKey: string;
+  publicKey!: string;
 }
 
 /**
@@ -519,7 +519,7 @@ export class RegisterEthUserDto extends SubmitCallDTO {
 export class RegisterTonUserDto extends SubmitCallDTO {
   @JSONSchema({ description: "TON user public key (Ed25519 in base64)." })
   @IsNotEmpty()
-  publicKey: string;
+  publicKey!: string;
 }
 
 export class UpdatePublicKeyDto extends SubmitCallDTO {
@@ -529,16 +529,16 @@ export class UpdatePublicKeyDto extends SubmitCallDTO {
       "For users with TON signing scheme it is public Ed25519 key (base64)."
   })
   @IsNotEmpty()
-  publicKey: string;
+  publicKey!: string;
 }
 
 export class UpdateUserRolesDto extends SubmitCallDTO {
   @IsUserAlias()
-  user: string;
+  user!: string;
 
   @JSONSchema({ description: "New set of roles for the user that will replace the old ones." })
   @IsNotEmpty()
-  roles: string[];
+  roles!: string[];
 }
 
 export class GetPublicKeyDto extends ChainCallDTO {
@@ -553,5 +553,5 @@ export class GetPublicKeyDto extends ChainCallDTO {
 export class GetMyProfileDto extends ChainCallDTO {
   // make signature required
   @IsNotEmpty()
-  signature: string;
+  signature!: string;
 }

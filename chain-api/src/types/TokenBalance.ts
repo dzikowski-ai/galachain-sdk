@@ -103,23 +103,23 @@ export class TokenBalance extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  public readonly owner: UserAlias;
+  public readonly owner!: UserAlias;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public readonly collection: string;
+  public readonly collection!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public readonly category: string;
+  public readonly category!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public readonly type: string;
+  public readonly type!: string;
 
   @ChainKey({ position: 4 })
   @IsDefined()
-  public readonly additionalKey: string;
+  public readonly additionalKey!: string;
 
   constructor(params?: {
     owner: UserAlias;
@@ -163,7 +163,7 @@ export class TokenBalance extends ChainObject {
 
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  private quantity: BigNumber;
+  private quantity!: BigNumber;
 
   @JSONSchema({
     description:
@@ -534,24 +534,24 @@ export class TokenHold {
   public static readonly DEFAULT_EXPIRES = 0;
 
   @IsUserAlias()
-  public readonly createdBy: UserAlias;
+  public readonly createdBy!: UserAlias;
 
   @IsNotEmpty()
   @BigNumberIsPositive()
   @BigNumberProperty()
-  public readonly instanceId: BigNumber;
+  public readonly instanceId!: BigNumber;
 
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public readonly quantity: BigNumber;
+  public readonly quantity!: BigNumber;
 
   @IsPositive()
   @IsInt()
-  public readonly created: number;
+  public readonly created!: number;
 
   @Min(0)
   @IsInt()
-  public readonly expires: number;
+  public readonly expires!: number;
 
   @IsString()
   @IsOptional()

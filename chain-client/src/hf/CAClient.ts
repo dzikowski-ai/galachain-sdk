@@ -19,8 +19,8 @@ import { Identity } from "fabric-network/lib/impl/wallet/identity";
 export class CAClient {
   public readonly orgMsp: string;
   public readonly caHostName: string;
-  public readonly asLocalhost: boolean;
-  public readonly affiliation: string;
+  public readonly asLocalhost: boolean = false;
+  public readonly affiliation: string = "";
   public readonly wallet: Promise<Wallet>;
   public readonly enrolledAdmin: Promise<Identity>;
   public readonly adminId: string;

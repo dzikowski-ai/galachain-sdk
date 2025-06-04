@@ -34,7 +34,7 @@ export interface GalaChainProviderOptions {
 }
 
 export abstract class GalaChainProvider {
-  private legacyCredentials: Record<string, string>;
+  private legacyCredentials!: Record<string, string>;
 
   constructor(protected options?: GalaChainProviderOptions) {
     if (options?.legacyCredentials) {
@@ -150,7 +150,7 @@ export abstract class CustomClient extends GalaChainProvider {
 }
 
 export abstract class WebSigner extends CustomClient {
-  protected address: string;
+  protected address!: string;
   protected provider: BrowserProvider | undefined;
 
   constructor(options?: GalaChainProviderOptions) {

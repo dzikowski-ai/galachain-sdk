@@ -29,52 +29,52 @@ export class TokenMintAllowanceRequest extends RangedChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 4 })
   @IsDefined()
-  public timeKey: string;
+  public timeKey!: string;
 
   @ChainKey({ position: 5 })
   @IsUserAlias()
-  public grantedTo: UserAlias;
+  public grantedTo!: UserAlias;
 
   @IsNotEmpty()
   @BigNumberProperty()
-  public totalKnownMintAllowancesCount: BigNumber;
+  public totalKnownMintAllowancesCount!: BigNumber;
 
   @IsNotEmpty()
-  public created: number;
+  public created!: number;
 
   @IsUserAlias()
-  public grantedBy: UserAlias;
+  public grantedBy!: UserAlias;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   @IsNotEmpty()
-  public state: TokenMintStatus;
+  public state!: TokenMintStatus;
 
   @IsNotEmpty()
-  public id: string;
+  public id!: string;
 
   @IsNotEmpty()
   @BigNumberProperty()
-  public uses: BigNumber;
+  public uses!: BigNumber;
 
   @IsOptional()
   public expires?: number;
@@ -82,7 +82,7 @@ export class TokenMintAllowanceRequest extends RangedChainObject {
   // todo: revisist epoch as chain key if/when fabric implements it beyond hard-coded 0
   // @ChainKey({ position: 4 })
   @IsNotEmpty()
-  public epoch: string;
+  public epoch!: string;
 
   public requestId(): string {
     const {

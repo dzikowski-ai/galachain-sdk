@@ -43,10 +43,10 @@ import { GalaChainContext } from "../types";
 import { getObjectsByPartialCompositeKey, putChainObject } from "../utils";
 
 export class SuperheroDto extends SubmitCallDTO {
-  public name: string;
+  public name!: string;
 
   @IsPositive()
-  public age: number;
+  public age!: number;
 
   public static create(name: string, age: number) {
     const dto = new SuperheroDto();
@@ -63,16 +63,16 @@ export class SuperheroQueryDto extends ChainCallDTO {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => SuperheroDto)
-  public saveBeforeReturn: SuperheroDto[];
+  public saveBeforeReturn!: SuperheroDto[];
 }
 
 export class Superhero extends ChainObject {
   @IsString()
   @ChainKey({ position: 0 })
-  public name: string;
+  public name!: string;
 
   @IsPositive()
-  public age: number;
+  public age!: number;
 
   @Exclude()
   public static readonly INDEX_KEY: string = "superhero";
@@ -80,14 +80,14 @@ export class Superhero extends ChainObject {
 
 export class KVDto extends ChainCallDTO {
   @IsNotEmpty()
-  public key: string;
+  public key!: string;
 
   public value?: string;
 }
 
 export class NestedKVDto extends ChainCallDTO {
   @IsNotEmpty()
-  public key: string;
+  public key!: string;
 
   public text?: string;
 

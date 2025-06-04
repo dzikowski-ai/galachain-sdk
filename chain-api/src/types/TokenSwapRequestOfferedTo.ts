@@ -27,9 +27,9 @@ export class TokenSwapRequestOfferedTo extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public offeredTo: string;
+  public offeredTo!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public swapRequestId: string;
+  public swapRequestId!: string;
 }

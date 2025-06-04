@@ -47,56 +47,56 @@ export class TokenClaim extends ChainObject {
   // This is the owner of the allowance, not the token
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  public ownerKey: UserAlias;
+  public ownerKey!: UserAlias;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 4 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 5 })
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @ChainKey({ position: 6 })
   @EnumProperty(AllowanceType)
-  public action: AllowanceType;
+  public action!: AllowanceType;
 
   // This is the person making the claim
   @ChainKey({ position: 7 })
   @IsUserAlias()
-  public issuerKey: UserAlias;
+  public issuerKey!: UserAlias;
 
   @ChainKey({ position: 8 })
   @IsPositive()
   @IsInt()
-  public allowanceCreated: number;
+  public allowanceCreated!: number;
 
   @ChainKey({ position: 9 })
   @BigNumberIsNotNegative()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public claimSequence: BigNumber;
+  public claimSequence!: BigNumber;
 
   @IsPositive()
   @IsInt()
-  public created: number;
+  public created!: number;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 }

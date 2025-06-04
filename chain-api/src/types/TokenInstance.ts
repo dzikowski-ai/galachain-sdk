@@ -45,22 +45,22 @@ export interface TokenInstanceKeyProperties {
 })
 export class TokenInstanceKey extends ChainCallDTO {
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   public static nftKey(
     c: TokenClassKey | TokenClass | TokenClassKeyProperties,
@@ -119,12 +119,12 @@ export class TokenInstanceQuantity extends ChainCallDTO {
   @ValidateNested()
   @Type(() => TokenInstanceKey)
   @IsNotEmpty()
-  public tokenInstance: TokenInstanceKey;
+  public tokenInstance!: TokenInstanceKey;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   @IsOptional()
   @JSONSchema({
@@ -153,7 +153,7 @@ export class TokenInstanceQuantity extends ChainCallDTO {
 })
 export class TokenInstanceQueryKey extends ChainCallDTO {
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @IsOptional()
   public category?: string;
@@ -235,29 +235,29 @@ export class TokenInstanceQueryKey extends ChainCallDTO {
 export class TokenInstance extends ChainObject {
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 4 })
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @IsBoolean()
-  public isNonFungible: boolean;
+  public isNonFungible!: boolean;
 
   @ValidateIf((i) => i.isNonFungible === true)
   @IsUserAlias()

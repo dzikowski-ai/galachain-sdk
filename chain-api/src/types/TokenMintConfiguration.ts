@@ -47,7 +47,7 @@ export class PostMintLockConfiguration extends ChainObject {
    *
    */
   @IsNotEmpty()
-  lockName: string;
+  lockName!: string;
 
   /**
    * @description
@@ -58,7 +58,7 @@ export class PostMintLockConfiguration extends ChainObject {
    */
   @IsNotEmpty()
   @IsUserAlias()
-  lockAuthority: UserAlias;
+  lockAuthority!: UserAlias;
 
   /**
    * @description
@@ -76,7 +76,7 @@ export class PostMintLockConfiguration extends ChainObject {
    */
   @IsNumber()
   @IsInt()
-  expirationModifier: number;
+  expirationModifier!: number;
 
   /**
    * @description
@@ -91,7 +91,7 @@ export class PostMintLockConfiguration extends ChainObject {
   @IsNumber()
   @Min(0)
   @Max(1)
-  lockPercentage: number;
+  lockPercentage!: number;
 }
 
 /**
@@ -116,7 +116,7 @@ export class BurnToMintConfiguration extends ChainObject {
   @IsNumber()
   @Min(0)
   @Max(1)
-  burnPercentage: number;
+  burnPercentage!: number;
 }
 
 /**
@@ -143,7 +143,7 @@ export class MintFeeConfiguration extends ChainObject {
   @IsOptional()
   @BigNumberProperty()
   @BigNumberIsPositive()
-  flatFee: BigNumber;
+  flatFee!: BigNumber;
 }
 
 /**
@@ -168,19 +168,19 @@ export class TokenMintConfiguration extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   /**
    * @description

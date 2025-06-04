@@ -42,7 +42,7 @@ export abstract class ChainError extends Error implements OptionalChainErrorData
    * status, it is a constant value to be used by clients integrating with
    * the chain.
    */
-  public readonly code: ErrorCode;
+  public readonly code!: ErrorCode;
 
   /**
    * An upper case string to be used as a key do diagnose where the error comes

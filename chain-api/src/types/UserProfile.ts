@@ -35,7 +35,7 @@ export class UserProfile extends ChainObject {
       "It may have the following format: client|<id>, eth|<checksumed-eth-addr>, or ton|<ton-bounceable-addr>."
   })
   @IsUserAlias()
-  alias: UserAlias;
+  alias!: UserAlias;
 
   @JSONSchema({
     description: `Eth address of the user.`

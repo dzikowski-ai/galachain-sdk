@@ -27,32 +27,32 @@ export class FeeUserPaymentReceipt extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  public paidByUser: UserAlias;
+  public paidByUser!: UserAlias;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public year: string;
+  public year!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public month: string;
+  public month!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public day: string;
+  public day!: string;
 
   // todo: consider adding hours and minutes
   // to the index as additional chain keys
 
   @ChainKey({ position: 4 })
   @IsNotEmpty()
-  public txId: string;
+  public txId!: string;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   @EnumProperty(FeeReceiptStatus)
-  public status: FeeReceiptStatus;
+  public status!: FeeReceiptStatus;
 }

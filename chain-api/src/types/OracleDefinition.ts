@@ -23,8 +23,8 @@ export class OracleDefinition extends ChainObject {
   @ChainKey({ position: 0 })
   @IsString()
   @IsNotEmpty()
-  public name: string;
+  public name!: string;
 
   @ArrayNotEmpty()
-  public authorities: string[];
+  public authorities!: string[];
 }

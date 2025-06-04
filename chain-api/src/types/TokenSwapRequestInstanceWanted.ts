@@ -29,27 +29,27 @@ export class TokenSwapRequestInstanceWanted extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 4 })
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @ChainKey({ position: 5 })
   @IsNotEmpty()
-  public swapRequestId: string;
+  public swapRequestId!: string;
 }

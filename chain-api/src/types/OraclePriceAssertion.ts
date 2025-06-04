@@ -31,12 +31,12 @@ export class ExternalToken extends ChainObject {
     description: `Name of the external currency, e.g. "Ethereum"`
   })
   @IsNotEmpty()
-  public name: string;
+  public name!: string;
 
   @JSONSchema({
     description: `Symbol of the external currency, e.g. "ETH"`
   })
-  public symbol: string;
+  public symbol!: string;
 }
 
 export class OraclePriceAssertion extends ChainObject {
@@ -46,18 +46,18 @@ export class OraclePriceAssertion extends ChainObject {
   })
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public oracle: string;
+  public oracle!: string;
 
   @JSONSchema({
     description: "Signing identity making the assertion contained within the DTO."
   })
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public identity: string;
+  public identity!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public txid: string;
+  public txid!: string;
 
   @JSONSchema({
     description: "First currency in the described currency pair. Unit of exchange."
@@ -101,7 +101,7 @@ export class OraclePriceAssertion extends ChainObject {
     description: "How much of the quoteToken is needed to purchase one unit of the baseToken."
   })
   @BigNumberProperty()
-  exchangeRate: BigNumber;
+  exchangeRate!: BigNumber;
 
   @JSONSchema({
     description: "(Optional). Base Token quantity from conversion to/from quote token quantity."
@@ -136,5 +136,5 @@ export class OraclePriceAssertion extends ChainObject {
       "Unix timestamp representing the date/time at which this price / exchange rate was calculated or estimated."
   })
   @IsNumber()
-  timestamp: number;
+  timestamp!: number;
 }

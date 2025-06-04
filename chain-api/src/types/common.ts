@@ -43,35 +43,35 @@ export enum AllowanceType {
 })
 export class AllowanceKey extends ChainCallDTO {
   @IsUserAlias()
-  public grantedTo: UserAlias;
+  public grantedTo!: UserAlias;
 
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @EnumProperty(AllowanceType)
-  public allowanceType: AllowanceType;
+  public allowanceType!: AllowanceType;
 
   @IsUserAlias()
-  public grantedBy: UserAlias;
+  public grantedBy!: UserAlias;
 
   @IsPositive()
   @IsInt()
-  public created: number;
+  public created!: number;
 }
 
 export enum TokenMintStatus {
@@ -88,25 +88,25 @@ export enum TokenMintStatus {
 @JSONSchema({ description: "Minimal property set representing a mint request." })
 export class MintRequestDto {
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @IsNotEmpty()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @IsNotEmpty()
-  public timeKey: string;
+  public timeKey!: string;
 
   @BigNumberProperty()
-  public totalKnownMintsCount: BigNumber;
+  public totalKnownMintsCount!: BigNumber;
 
   @IsNotEmpty()
-  public id: string;
+  public id!: string;
 
   @JSONSchema({
     description: "The owner of minted tokens. If the value is missing, chaincode caller is used."

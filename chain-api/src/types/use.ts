@@ -32,7 +32,7 @@ export class ReleaseTokenDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenInstanceKey)
   @IsNotEmpty()
-  tokenInstance: TokenInstanceKey;
+  tokenInstance!: TokenInstanceKey;
 }
 
 @JSONSchema({
@@ -50,7 +50,7 @@ export class UseTokenDto extends SubmitCallDTO {
     description: "The user who is going to use token."
   })
   @IsUserRef()
-  inUseBy: UserRef;
+  inUseBy!: UserRef;
 
   @JSONSchema({
     description:
@@ -60,7 +60,7 @@ export class UseTokenDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenInstanceKey)
   @IsNotEmpty()
-  tokenInstance: TokenInstanceKey;
+  tokenInstance!: TokenInstanceKey;
 
   @JSONSchema({
     description: "The quantity of token units to be used."
@@ -68,7 +68,7 @@ export class UseTokenDto extends SubmitCallDTO {
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 
   @JSONSchema({
     description: "Allowance ids to be used (optional)."

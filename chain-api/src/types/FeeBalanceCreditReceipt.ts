@@ -26,44 +26,44 @@ export class FeeBalanceCreditReceipt extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public year: string;
+  public year!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public month: string;
+  public month!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public day: string;
+  public day!: string;
 
   @ChainKey({ position: 3 })
   @IsString()
   @IsNotEmpty()
-  public hours: string;
+  public hours!: string;
 
   @ChainKey({ position: 4 })
   @IsString()
   @IsNotEmpty()
-  public minutes: string;
+  public minutes!: string;
 
   @ChainKey({ position: 5 })
   @IsString()
   @IsNotEmpty()
-  public seconds: string;
+  public seconds!: string;
 
   @ChainKey({ position: 6 })
   @IsUserAlias()
-  public creditToUser: UserAlias;
+  public creditToUser!: UserAlias;
 
   @ChainKey({ position: 7 })
   @IsNotEmpty()
-  public txId: string;
+  public txId!: string;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   @EnumProperty(FeeReceiptStatus)
-  public status: FeeReceiptStatus;
+  public status!: FeeReceiptStatus;
 }

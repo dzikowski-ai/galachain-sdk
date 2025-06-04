@@ -45,7 +45,7 @@ export class FetchBurnsDto extends ChainCallDTO {
     description: "The user who burned the token."
   })
   @IsUserRef()
-  burnedBy: UserRef;
+  burnedBy!: UserRef;
 
   @JSONSchema({
     description: "Token collection. Optional, but required if category is provided."
@@ -103,7 +103,7 @@ export class BurnTokensDto extends SubmitCallDTO {
   @ValidateNested({ each: true })
   @Type(() => BurnTokenQuantity)
   @ArrayNotEmpty()
-  tokenInstances: Array<BurnTokenQuantity>;
+  tokenInstances!: Array<BurnTokenQuantity>;
 
   @JSONSchema({
     description:
@@ -133,7 +133,7 @@ export class BurnAndMintDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => BurnTokensDto)
   @IsNotEmpty()
-  burnDto: BurnTokensDto;
+  burnDto!: BurnTokensDto;
 
   @JSONSchema({
     description:
@@ -141,7 +141,7 @@ export class BurnAndMintDto extends SubmitCallDTO {
       "The burnDto signature will be validated against this user's public key on chain."
   })
   @IsUserRef()
-  burnOwner: UserRef;
+  burnOwner!: UserRef;
 
   @JSONSchema({
     description: "DTOs of tokens to mint."
@@ -149,7 +149,7 @@ export class BurnAndMintDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => BatchMintTokenDto)
   @IsNotEmpty()
-  mintDto: BatchMintTokenDto;
+  mintDto!: BatchMintTokenDto;
 }
 
 @JSONSchema({
@@ -211,7 +211,7 @@ export class FetchBurnCountersResponse extends ChainCallDTO {
   @JSONSchema({ description: "List of token burn counters." })
   @ValidateNested({ each: true })
   @Type(() => TokenBurnCounter)
-  results: TokenBurnCounter[];
+  results!: TokenBurnCounter[];
 
   @JSONSchema({ description: "Next page bookmark." })
   @IsOptional()
@@ -227,35 +227,35 @@ export class TokenBurnCounterCompositeKeyDto extends ChainCallDTO {
     description: "Token collection."
   })
   @IsNotEmpty()
-  collection: string;
+  collection!: string;
 
   @JSONSchema({
     description: "Token category."
   })
   @IsNotEmpty()
-  category: string;
+  category!: string;
   @JSONSchema({
     description: "Token type."
   })
   @IsNotEmpty()
-  type: string;
+  type!: string;
   @JSONSchema({
     description: "Token additionalKey."
   })
   @IsDefined()
-  additionalKey: string;
+  additionalKey!: string;
 
   @JSONSchema({
     description: "timeKey of TokenBurnCounter for range reads"
   })
   @IsNotEmpty()
-  timeKey: string;
+  timeKey!: string;
 
   @JSONSchema({
     description: "burnedBy user."
   })
   @IsUserRef()
-  burnedBy: UserRef;
+  burnedBy!: UserRef;
 
   @JSONSchema({
     description: "Token instance."
@@ -264,7 +264,7 @@ export class TokenBurnCounterCompositeKeyDto extends ChainCallDTO {
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  instance: BigNumber;
+  instance!: BigNumber;
 
   @JSONSchema({
     description:
@@ -273,5 +273,5 @@ export class TokenBurnCounterCompositeKeyDto extends ChainCallDTO {
   })
   @IsNotEmpty()
   @BigNumberProperty()
-  totalKnownBurnsCount: BigNumber;
+  totalKnownBurnsCount!: BigNumber;
 }

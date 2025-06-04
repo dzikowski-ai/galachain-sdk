@@ -46,7 +46,7 @@ export class FetchTokenClassesDto extends ChainCallDTO {
   @ValidateNested({ each: true })
   @Type(() => TokenClassKey)
   @ArrayNotEmpty()
-  tokenClasses: Array<TokenClassKey>;
+  tokenClasses!: Array<TokenClassKey>;
 }
 
 @JSONSchema({
@@ -110,7 +110,7 @@ export class FetchTokenClassesResponse extends ChainCallDTO {
   @JSONSchema({ description: "List of Token Classes." })
   @ValidateNested({ each: true })
   @Type(() => TokenClass)
-  results: TokenClass[];
+  results!: TokenClass[];
 
   @JSONSchema({ description: "Next page bookmark." })
   @IsOptional()
@@ -125,7 +125,7 @@ export class FetchTokenInstancesDto extends ChainCallDTO {
   @ValidateNested({ each: true })
   @Type(() => TokenInstanceKey)
   @ArrayNotEmpty()
-  tokenInstances: Array<TokenInstanceKey>;
+  tokenInstances!: Array<TokenInstanceKey>;
 }
 
 @JSONSchema({
@@ -181,18 +181,18 @@ export class CreateTokenClassDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenClassKey)
   @IsNotEmpty()
-  tokenClass: TokenClassKey;
+  tokenClass!: TokenClassKey;
 
   @MaxLength(200)
-  name: string;
+  name!: string;
 
   @MaxLength(20)
   @IsAlpha()
-  symbol: string;
+  symbol!: string;
 
   @IsNotEmpty()
   @MaxLength(1000)
-  description: string;
+  description!: string;
 
   @JSONSchema({
     description:
@@ -243,7 +243,7 @@ export class CreateTokenClassDto extends SubmitCallDTO {
   rarity?: string;
 
   @IsUrl()
-  image: string;
+  image!: string;
 
   @JSONSchema({
     description: "Determines if the token is an NFT. Set to false if missing."
@@ -285,7 +285,7 @@ export class UpdateTokenClassDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenClassKey)
   @IsNotEmpty()
-  tokenClass: TokenClassKey;
+  tokenClass!: TokenClassKey;
 
   @IsOptional()
   @MaxLength(200)
@@ -451,21 +451,21 @@ export class TokenBalanceWithMetadata extends ChainCallDTO {
   @ValidateNested()
   @Type(() => TokenBalance)
   @IsObject()
-  balance: TokenBalance;
+  balance!: TokenBalance;
 
   @JSONSchema({
     description: "The TokenClass metadata corresponding to the TokenBalance on this DTO."
   })
   @Type(() => TokenClass)
   @IsObject()
-  token: TokenClass;
+  token!: TokenClass;
 }
 
 export class FetchBalancesWithPaginationResponse extends ChainCallDTO {
   @JSONSchema({ description: "List of balances with token metadata." })
   @ValidateNested({ each: true })
   @Type(() => TokenBalance)
-  results: TokenBalance[];
+  results!: TokenBalance[];
 
   @JSONSchema({ description: "Next page bookmark." })
   @IsOptional()
@@ -477,7 +477,7 @@ export class FetchBalancesWithTokenMetadataResponse extends ChainCallDTO {
   @JSONSchema({ description: "List of balances with token metadata." })
   @ValidateNested({ each: true })
   @Type(() => TokenBalanceWithMetadata)
-  results: TokenBalanceWithMetadata[];
+  results!: TokenBalanceWithMetadata[];
 
   @JSONSchema({ description: "Next page bookmark." })
   @IsOptional()
@@ -498,7 +498,7 @@ export class TransferTokenDto extends SubmitCallDTO {
   from?: UserRef;
 
   @IsUserRef()
-  to: UserRef;
+  to!: UserRef;
 
   @JSONSchema({
     description:
@@ -508,7 +508,7 @@ export class TransferTokenDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenInstanceKey)
   @IsNotEmpty()
-  tokenInstance: TokenInstanceKey;
+  tokenInstance!: TokenInstanceKey;
 
   @JSONSchema({
     description: "The quantity of token units to be transferred."
@@ -516,7 +516,7 @@ export class TransferTokenDto extends SubmitCallDTO {
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 
   @JSONSchema({
     description: "Allowance ids to be used on transferToken (optional)."

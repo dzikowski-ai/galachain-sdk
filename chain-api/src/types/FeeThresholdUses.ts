@@ -26,18 +26,18 @@ export class FeeThresholdUses extends ChainObject {
   @ChainKey({ position: 0 })
   @IsString()
   @IsNotEmpty()
-  public feeCode: string;
+  public feeCode!: string;
 
   @ChainKey({ position: 1 })
   @IsUserAlias()
-  public user: UserAlias;
+  public user!: UserAlias;
 
   @BigNumberIsNotNegative()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public cumulativeUses: BigNumber;
+  public cumulativeUses!: BigNumber;
 
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public cumulativeFeeQuantity: BigNumber;
+  public cumulativeFeeQuantity!: BigNumber;
 }

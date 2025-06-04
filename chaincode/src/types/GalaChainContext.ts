@@ -44,7 +44,7 @@ class GalaChainContextConfigImpl implements GalaChainContextConfig {
 }
 
 export class GalaChainContext extends Context {
-  stub: GalaChainStub;
+  stub!: GalaChainStub;
   private callingUserValue?: UserAlias;
   private callingUserEthAddressValue?: string;
   private callingUserTonAddressValue?: string;

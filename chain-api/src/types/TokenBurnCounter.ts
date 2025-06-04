@@ -27,56 +27,56 @@ export class TokenBurnCounter extends RangedChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 4 })
   @IsNotEmpty()
-  public timeKey: string;
+  public timeKey!: string;
 
   @ChainKey({ position: 5 })
   @IsUserAlias()
-  public burnedBy: UserAlias;
+  public burnedBy!: UserAlias;
 
   @ChainKey({ position: 6 })
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @ChainKey({ position: 7 })
   @IsNotEmpty()
   @BigNumberProperty()
-  public totalKnownBurnsCount: BigNumber;
+  public totalKnownBurnsCount!: BigNumber;
 
   @IsNotEmpty()
-  public created: number;
+  public created!: number;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   // id of a referenced TokenBurn
   @IsNotEmpty()
-  public referenceId: string;
+  public referenceId!: string;
 
   // todo: revisit epoch as chain key if/when fabric implements it beyond hard-coded 0
   // @ChainKey({ position: 4 })
   @IsNotEmpty()
-  public epoch: string;
+  public epoch!: string;
 
   @Exclude()
   public referencedBurnId(): string {

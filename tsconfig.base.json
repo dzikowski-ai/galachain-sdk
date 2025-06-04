@@ -22,7 +22,7 @@
     "composite": true,
     "skipLibCheck": true,
     "noPropertyAccessFromIndexSignature": false,
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": true,
     "paths": {
       "@gala-chain/api": [
         "chain-api/src/index.ts"

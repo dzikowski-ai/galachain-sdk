@@ -46,13 +46,13 @@ export class OracleDefinitionDto extends SubmitCallDTO {
     description: "Name of the oracle. Unique chain key."
   })
   @IsNotEmpty()
-  public name: string;
+  public name!: string;
 
   @JSONSchema({
     description: "Oracle Authorities. On-Chain identities that speak for this Oracle."
   })
   @ArrayUnique()
-  public authorities: string[];
+  public authorities!: string[];
 }
 
 @JSONSchema({
@@ -113,7 +113,7 @@ export class FetchOracleDefinitionsResponse extends ChainCallDTO {
 
   @ValidateNested({ each: true })
   @Type(() => OracleDefinition)
-  results: OracleDefinition[];
+  results!: OracleDefinition[];
 
   @IsOptional()
   @IsString()
@@ -128,13 +128,13 @@ export class OraclePriceAssertionDto extends SubmitCallDTO {
     description: "Name of the oracle defined on chain."
   })
   @IsNotEmpty()
-  public oracle: string;
+  public oracle!: string;
 
   @JSONSchema({
     description: "Signing identity making the assertion contained within the DTO."
   })
   @IsNotEmpty()
-  public identity: string;
+  public identity!: string;
 
   @JSONSchema({
     description:
@@ -179,7 +179,7 @@ export class OraclePriceAssertionDto extends SubmitCallDTO {
     description: "How much of the quoteToken is needed to purchase one unit of the baseToken."
   })
   @BigNumberProperty()
-  exchangeRate: BigNumber;
+  exchangeRate!: BigNumber;
 
   @JSONSchema({
     description: "(Optional) Source of price data. Name of Third Party data source."
@@ -200,7 +200,7 @@ export class OraclePriceAssertionDto extends SubmitCallDTO {
       "Unix timestamp representing the date/time at which this price / exchange rate was calculated or estimated."
   })
   @IsNumber()
-  timestamp: number;
+  timestamp!: number;
 }
 
 @JSONSchema({
@@ -211,7 +211,7 @@ export class FetchOraclePriceAssertionsResponse extends ChainCallDTO {
 
   @ValidateNested({ each: true })
   @Type(() => OraclePriceAssertion)
-  results: OraclePriceAssertion[];
+  results!: OraclePriceAssertion[];
 
   @IsOptional()
   @IsString()
@@ -226,20 +226,20 @@ export class OraclePriceCrossRateAssertionDto extends SubmitCallDTO {
     description: "Name of the oracle defined on chain."
   })
   @IsNotEmpty()
-  public oracle: string;
+  public oracle!: string;
 
   @JSONSchema({
     description: "Signing identity making the assertion contained within the DTO."
   })
   @IsNotEmpty()
-  public identity: string;
+  public identity!: string;
 
   @JSONSchema({
     description: "Cross rate for First currency in the described currency pair. Unit of exchange."
   })
   @ValidateNested()
   @Type(() => OraclePriceAssertionDto)
-  baseTokenCrossRate: OraclePriceAssertionDto;
+  baseTokenCrossRate!: OraclePriceAssertionDto;
 
   @JSONSchema({
     description:
@@ -247,7 +247,7 @@ export class OraclePriceCrossRateAssertionDto extends SubmitCallDTO {
   })
   @ValidateNested()
   @Type(() => OraclePriceAssertionDto)
-  quoteTokenCrossRate: OraclePriceAssertionDto;
+  quoteTokenCrossRate!: OraclePriceAssertionDto;
 
   @JSONSchema({
     description:
@@ -274,7 +274,7 @@ export class OraclePriceCrossRateAssertionDto extends SubmitCallDTO {
     description: "Cross rate for baseToken and quoteToken, calculated from the crossRateToken exchange rates."
   })
   @BigNumberProperty()
-  crossRate: BigNumber;
+  crossRate!: BigNumber;
 
   @Exclude()
   public validateCrossRateTokenKeys() {
@@ -379,7 +379,7 @@ export class FetchOraclePriceCrossRateAssertionsResponse extends ChainCallDTO {
 
   @ValidateNested({ each: true })
   @Type(() => OraclePriceCrossRateAssertion)
-  results: OraclePriceCrossRateAssertion[];
+  results!: OraclePriceCrossRateAssertion[];
 
   @IsOptional()
   @IsString()
@@ -390,12 +390,12 @@ export class DeleteOracleAssertionsDto extends SubmitCallDTO {
   public static MAX_LIMIT = 1000;
 
   @ArrayNotEmpty()
-  chainKeys: string[];
+  chainKeys!: string[];
 }
 
 export class DeleteOracleDefinitionDto extends SubmitCallDTO {
   @IsNotEmpty()
-  name: string;
+  name!: string;
 }
 
 @JSONSchema({
@@ -427,7 +427,7 @@ export class OracleBridgeFeeAssertionDto extends SubmitCallDTO {
   })
   @Min(0)
   @Max(32)
-  public galaDecimals: number;
+  public galaDecimals!: number;
 
   @JSONSchema({
     description:
@@ -435,7 +435,7 @@ export class OracleBridgeFeeAssertionDto extends SubmitCallDTO {
   })
   @ValidateNested()
   @Type(() => TokenClassKey)
-  public bridgeToken: TokenClassKey;
+  public bridgeToken!: TokenClassKey;
 
   @JSONSchema({
     description:
@@ -443,19 +443,19 @@ export class OracleBridgeFeeAssertionDto extends SubmitCallDTO {
       "included ?nft=true. Otherwise false."
   })
   @IsBoolean()
-  public bridgeTokenIsNonFungible: boolean;
+  public bridgeTokenIsNonFungible!: boolean;
 
   @JSONSchema({
     description: "Estimated number of gas units required for the transaction."
   })
   @BigNumberProperty()
-  public estimatedTxFeeUnitsTotal: BigNumber;
+  public estimatedTxFeeUnitsTotal!: BigNumber;
 
   @JSONSchema({
     description: "Estimated price per unit of gas, as retrieved approximately " + "at the time of assertion."
   })
   @BigNumberProperty()
-  public estimatedPricePerTxFeeUnit: BigNumber;
+  public estimatedPricePerTxFeeUnit!: BigNumber;
 
   @JSONSchema({
     description:
@@ -470,7 +470,7 @@ export class OracleBridgeFeeAssertionDto extends SubmitCallDTO {
       "the result to the `galaExchangeRate.externalQuoteToken unit denomination.`"
   })
   @BigNumberProperty()
-  public estimatedTotalTxFeeInExternalToken: BigNumber;
+  public estimatedTotalTxFeeInExternalToken!: BigNumber;
 
   @JSONSchema({
     description:
@@ -478,7 +478,7 @@ export class OracleBridgeFeeAssertionDto extends SubmitCallDTO {
       "destination chain, converted to $GALA, for payment on GalaChain"
   })
   @BigNumberProperty()
-  public estimatedTotalTxFeeInGala: BigNumber;
+  public estimatedTotalTxFeeInGala!: BigNumber;
 
   @JSONSchema({
     description:
@@ -486,7 +486,7 @@ export class OracleBridgeFeeAssertionDto extends SubmitCallDTO {
       "was calculated and/or estimated."
   })
   @IsNumber()
-  timestamp: number;
+  timestamp!: number;
 
   @JSONSchema({
     description:
@@ -494,5 +494,5 @@ export class OracleBridgeFeeAssertionDto extends SubmitCallDTO {
       "authorize() function for verification/validation."
   })
   @IsNotEmpty()
-  signingIdentity: string;
+  signingIdentity!: string;
 }

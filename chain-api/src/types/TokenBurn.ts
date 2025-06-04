@@ -27,38 +27,38 @@ export class TokenBurn extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  public burnedBy: UserAlias;
+  public burnedBy!: UserAlias;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 4 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 5 })
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @ChainKey({ position: 6 })
   @IsPositive()
   @IsInt()
-  public created: number;
+  public created!: number;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 }

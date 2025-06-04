@@ -25,11 +25,11 @@ export class LockTokenQuantity {
   @ValidateNested()
   @Type(() => TokenInstanceKey)
   @IsNotEmpty()
-  tokenInstanceKey: TokenInstanceKey;
+  tokenInstanceKey!: TokenInstanceKey;
 
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 
   @JSONSchema({
     description: "The current owner of tokens. If the value is missing, chaincode caller is used."

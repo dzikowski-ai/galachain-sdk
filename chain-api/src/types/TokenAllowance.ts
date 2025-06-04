@@ -35,49 +35,49 @@ export class TokenAllowance extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  public grantedTo: UserAlias;
+  public grantedTo!: UserAlias;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 4 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 5 })
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @ChainKey({ position: 6 })
   @EnumProperty(AllowanceType)
-  public allowanceType: AllowanceType;
+  public allowanceType!: AllowanceType;
 
   // This would make it hard to find all allowances issued out...
   @ChainKey({ position: 7 })
   @IsUserAlias()
-  public grantedBy: UserAlias;
+  public grantedBy!: UserAlias;
 
   @ChainKey({ position: 8 })
   @IsPositive()
   @IsInt()
-  public created: number;
+  public created!: number;
 
   @IsNotEmpty()
   @BigNumberIsPositive()
   @BigNumberProperty({ allowInfinity: true })
-  public uses: BigNumber;
+  public uses!: BigNumber;
 
   @BigNumberIsNotNegative()
   @BigNumberIsInteger()
@@ -87,12 +87,12 @@ export class TokenAllowance extends ChainObject {
 
   @Min(0)
   @IsInt()
-  public expires: number;
+  public expires!: number;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty({ allowInfinity: true })
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   @BigNumberIsNotNegative()
   @BigNumberProperty()

@@ -27,39 +27,39 @@ export class TokenMintAllowance extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 4 })
   @BigNumberProperty()
-  public totalKnownMintAllowancesAtRequest: BigNumber;
+  public totalKnownMintAllowancesAtRequest!: BigNumber;
 
   @ChainKey({ position: 5 })
   @IsUserAlias()
-  public grantedBy: UserAlias;
+  public grantedBy!: UserAlias;
 
   @ChainKey({ position: 6 })
   @IsUserAlias()
-  public grantedTo: UserAlias;
+  public grantedTo!: UserAlias;
 
   @ChainKey({ position: 7 })
   @IsNotEmpty()
-  public created: number;
+  public created!: number;
 
   @IsNotEmpty()
-  public reqId: string;
+  public reqId!: string;
 
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 }

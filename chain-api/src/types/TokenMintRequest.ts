@@ -30,53 +30,53 @@ export class TokenMintRequest extends RangedChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 4 })
   @IsNotEmpty()
-  public timeKey: string;
+  public timeKey!: string;
 
   @ChainKey({ position: 5 })
   @IsUserAlias()
-  public owner: UserAlias;
+  public owner!: UserAlias;
 
   @IsNotEmpty()
   @BigNumberProperty()
-  public totalKnownMintsCount: BigNumber;
+  public totalKnownMintsCount!: BigNumber;
 
   @IsUserAlias()
-  public requestor: UserAlias;
+  public requestor!: UserAlias;
 
   @IsNotEmpty()
-  public created: number;
+  public created!: number;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   @IsNotEmpty()
-  public state: TokenMintStatus;
+  public state!: TokenMintStatus;
 
   @IsNotEmpty()
-  public id: string;
+  public id!: string;
 
   // todo: revisit epoch as chain key if/when fabric implements it beyond hard-coded 0
   // @ChainKey({ position: ? })
   @IsNotEmpty()
-  public epoch: string;
+  public epoch!: string;
 
   @IsOptional()
   @Type(() => AllowanceKey)

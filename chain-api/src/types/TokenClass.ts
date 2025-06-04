@@ -47,16 +47,16 @@ export interface TokenClassKeyProperties {
 })
 export class TokenClassKey extends ChainCallDTO {
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   public toString() {
     return this.toStringKey();
@@ -91,23 +91,23 @@ export class TokenClass extends ChainObject {
   // CANNOT BE CHANGED AFTER CREATION
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @IsNotEmpty()
   @Equals(GC_NETWORK_ID)
-  public network: string;
+  public network!: string;
 
   /// ///////////////////////////////////////////////////
   // READ-ONLY PROPERTIES
@@ -116,37 +116,37 @@ export class TokenClass extends ChainObject {
 
   @Min(0)
   @Max(32)
-  public decimals: number; // This can only be expanded after creation
+  public decimals!: number; // This can only be expanded after creation
 
   @IsNotEmpty()
   @BigNumberIsPositive()
   @BigNumberProperty()
-  public maxSupply: BigNumber;
+  public maxSupply!: BigNumber;
 
   @IsBoolean()
-  public isNonFungible: boolean;
+  public isNonFungible!: boolean;
 
   @IsNotEmpty()
   @BigNumberIsPositive()
   @BigNumberProperty({ allowInfinity: true })
-  public maxCapacity: BigNumber;
+  public maxCapacity!: BigNumber;
 
   // IDs of authorities who can manage this token
   @IsUserAlias({ each: true })
-  public authorities: UserAlias[];
+  public authorities!: UserAlias[];
 
   /// ///////////////////////////////////////////////////
   // Permissioned Properties (Authorities can directly modify)
   @IsNotEmpty()
-  public name: string;
+  public name!: string;
 
   @IsNotEmpty()
   @IsAlpha()
-  public symbol: string;
+  public symbol!: string;
 
   @IsNotEmpty()
   @MaxLength(1000)
-  public description: string;
+  public description!: string;
 
   // This is for tracking external token data. We don't use it internally (I think?)
   @IsOptional()
@@ -161,7 +161,7 @@ export class TokenClass extends ChainObject {
   // a URI to the image
   @IsNotEmpty()
   @MaxLength(500)
-  public image: string;
+  public image!: string;
 
   // Rarity of the NFT
   @IsOptional()
@@ -170,10 +170,10 @@ export class TokenClass extends ChainObject {
 
   @BigNumberIsPositive()
   @BigNumberProperty()
-  public totalBurned: BigNumber;
+  public totalBurned!: BigNumber;
 
   @BigNumberProperty()
-  public totalMintAllowance: BigNumber;
+  public totalMintAllowance!: BigNumber;
 
   @IsOptional()
   @BigNumberProperty()
@@ -185,7 +185,7 @@ export class TokenClass extends ChainObject {
    * @deprecated 2023-05-30, replaced with knownMintSupply for high-throughput implementation.
    */
   @BigNumberProperty()
-  public totalSupply: BigNumber;
+  public totalSupply!: BigNumber;
 
   @IsOptional()
   @BigNumberProperty()

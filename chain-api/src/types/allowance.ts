@@ -55,7 +55,7 @@ export class FetchAllowancesDto extends ChainCallDTO {
     description: "A user who can use an allowance."
   })
   @IsUserRef()
-  grantedTo: UserRef;
+  grantedTo!: UserRef;
 
   @JSONSchema({
     description: "Token collection. Optional, but required if category is provided."
@@ -136,7 +136,7 @@ export class FetchAllowancesLegacyDto extends ChainCallDTO {
     description: "A user who can use an allowance."
   })
   @IsUserRef()
-  grantedTo: UserRef;
+  grantedTo!: UserRef;
 
   @JSONSchema({
     description: "Token collection. Optional, but required if category is provided."
@@ -196,7 +196,7 @@ export class FetchAllowancesResponse extends ChainCallDTO {
   @JSONSchema({ description: "List of allowances." })
   @ValidateNested({ each: true })
   @Type(() => TokenAllowance)
-  results: TokenAllowance[];
+  results!: TokenAllowance[];
 
   @JSONSchema({ description: "Next page bookmark." })
   @IsOptional()
@@ -212,7 +212,7 @@ export class DeleteAllowancesDto extends SubmitCallDTO {
     description: "A user who can use an allowance."
   })
   @IsUserRef()
-  grantedTo: UserRef;
+  grantedTo!: UserRef;
 
   @JSONSchema({
     description: "User who granted allowances."
@@ -276,7 +276,7 @@ export class GrantAllowanceDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenInstanceQueryKey)
   @IsNotEmpty()
-  tokenInstance: TokenInstanceQueryKey;
+  tokenInstance!: TokenInstanceQueryKey;
 
   @JSONSchema({
     description: "List of objects with user and token quantities. " + "The user fields must be unique"
@@ -285,18 +285,18 @@ export class GrantAllowanceDto extends SubmitCallDTO {
   @Type(() => GrantAllowanceQuantity)
   @ArrayNotEmpty()
   @ArrayUniqueObjects("user")
-  quantities: Array<GrantAllowanceQuantity>;
+  quantities!: Array<GrantAllowanceQuantity>;
 
   @IsNotEmpty()
   @EnumProperty(AllowanceType)
-  allowanceType: AllowanceType;
+  allowanceType!: AllowanceType;
 
   @JSONSchema({
     description: "How many times each allowance can be used."
   })
   @BigNumberIsPositive()
   @BigNumberProperty({ allowInfinity: true })
-  uses: BigNumber;
+  uses!: BigNumber;
 
   @JSONSchema({
     description:
@@ -335,7 +335,7 @@ export class HighThroughputGrantAllowanceDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenInstanceQueryKey)
   @IsNotEmpty()
-  tokenInstance: TokenInstanceQueryKey;
+  tokenInstance!: TokenInstanceQueryKey;
 
   @JSONSchema({
     description: "List of objects with user and token quantities. " + "The user fields must be unique"
@@ -344,11 +344,11 @@ export class HighThroughputGrantAllowanceDto extends SubmitCallDTO {
   @Type(() => GrantAllowanceQuantity)
   @ArrayNotEmpty()
   @ArrayUniqueObjects("user")
-  quantities: Array<GrantAllowanceQuantity>;
+  quantities!: Array<GrantAllowanceQuantity>;
 
   @IsNotEmpty()
   @EnumProperty(AllowanceType)
-  allowanceType: AllowanceType;
+  allowanceType!: AllowanceType;
 
   @JSONSchema({
     description: "How many times each allowance can be used."
@@ -356,7 +356,7 @@ export class HighThroughputGrantAllowanceDto extends SubmitCallDTO {
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  uses: BigNumber;
+  uses!: BigNumber;
 
   @JSONSchema({
     description:
@@ -379,7 +379,7 @@ export class FulfillMintAllowanceDto extends SubmitCallDTO {
   @ArrayNotEmpty()
   @ArrayMaxSize(FulfillMintAllowanceDto.MAX_ARR_SIZE)
   @ArrayUniqueObjects("id")
-  requests: MintRequestDto[];
+  requests!: MintRequestDto[];
 }
 
 @JSONSchema({
@@ -447,7 +447,7 @@ export class FullAllowanceCheckResDto extends ChainCallDTO {
     description: "True if all resulting token(s) have active/un-expired allowances available."
   })
   @IsBoolean()
-  all: boolean;
+  all!: boolean;
 
   @JSONSchema({
     description: "TokenInstanceKey(s) of any tokens missing the requested AllowanceType."
@@ -466,16 +466,16 @@ export class FullAllowanceCheckResDto extends ChainCallDTO {
 export class RefreshAllowanceDto extends ChainCallDTO {
   @Type(() => AllowanceKey)
   @IsNotEmpty()
-  public allowanceKey: AllowanceKey;
+  public allowanceKey!: AllowanceKey;
 
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public uses: BigNumber;
+  public uses!: BigNumber;
 
   @Min(0)
   @IsInt()
-  public expires: number;
+  public expires!: number;
 }
 
 @JSONSchema({
@@ -487,5 +487,5 @@ export class RefreshAllowancesDto extends SubmitCallDTO {
   @ValidateNested({ each: true })
   @Type(() => RefreshAllowanceDto)
   @ArrayNotEmpty()
-  allowances: Array<RefreshAllowanceDto>;
+  allowances!: Array<RefreshAllowanceDto>;
 }

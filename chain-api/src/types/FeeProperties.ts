@@ -24,23 +24,23 @@ export class FeeProperties extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public id: string;
+  public id!: string;
 
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 }

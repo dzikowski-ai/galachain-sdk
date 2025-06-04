@@ -22,7 +22,7 @@ export enum GalaChainResponseType {
 }
 
 export abstract class GalaChainResponse<T> {
-  public readonly Status: GalaChainResponseType;
+  public readonly Status!: GalaChainResponseType;
   public readonly Message?: string;
   public readonly ErrorCode?: number;
   public readonly ErrorKey?: string;

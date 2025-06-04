@@ -82,7 +82,7 @@ export class RequestTokenSwapDto extends SubmitCallDTO {
   @Type(() => TokenInstanceQuantity)
   @ArrayMinSize(1)
   @ArrayUnique()
-  public offered: Array<TokenInstanceQuantity>;
+  public offered!: Array<TokenInstanceQuantity>;
 
   @JSONSchema({
     description: "A list of wanted token instances."
@@ -91,7 +91,7 @@ export class RequestTokenSwapDto extends SubmitCallDTO {
   @Type(() => TokenInstanceQuantity)
   @ArrayMinSize(1)
   @ArrayUnique()
-  public wanted: Array<TokenInstanceQuantity>;
+  public wanted!: Array<TokenInstanceQuantity>;
 
   @JSONSchema({
     description: "How many times swap can filled."
@@ -99,7 +99,7 @@ export class RequestTokenSwapDto extends SubmitCallDTO {
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public uses: BigNumber;
+  public uses!: BigNumber;
 
   @JSONSchema({
     description:
@@ -124,7 +124,7 @@ export class ExpectedTokenSwap extends ChainCallDTO {
   @Type(() => TokenInstanceQuantity)
   @ArrayMinSize(1)
   @ArrayUnique()
-  public offered: Array<TokenInstanceQuantity>;
+  public offered!: Array<TokenInstanceQuantity>;
 
   @JSONSchema({
     description:
@@ -134,7 +134,7 @@ export class ExpectedTokenSwap extends ChainCallDTO {
   @Type(() => TokenInstanceQuantity)
   @ArrayMinSize(1)
   @ArrayUnique()
-  public wanted: Array<TokenInstanceQuantity>;
+  public wanted!: Array<TokenInstanceQuantity>;
 }
 
 @JSONSchema({
@@ -147,7 +147,7 @@ export class FillTokenSwapDto extends SubmitCallDTO {
     description: "Swap request ID to be filled"
   })
   @IsNotEmpty()
-  public swapRequestId: string;
+  public swapRequestId!: string;
 
   @JSONSchema({
     description: "Expected token swap trade to be validated before filling the swap."
@@ -192,7 +192,7 @@ export class BatchFillTokenSwapDto extends SubmitCallDTO {
   @Type(() => FillTokenSwapDto)
   @ArrayNotEmpty()
   @ArrayMaxSize(BatchFillTokenSwapDto.MAX_ARR_SIZE)
-  swapDtos: Array<FillTokenSwapDto>;
+  swapDtos!: Array<FillTokenSwapDto>;
 }
 
 export class TerminateTokenSwapDto extends SubmitCallDTO {
@@ -200,7 +200,7 @@ export class TerminateTokenSwapDto extends SubmitCallDTO {
     description: "Swap request ID to be terminated."
   })
   @IsNotEmpty()
-  public readonly swapRequestId: string;
+  public readonly swapRequestId!: string;
 }
 
 @JSONSchema({
@@ -221,7 +221,7 @@ export class FetchTokenSwapByRequestIdDto extends ChainCallDTO {
     description: "Token swap request ID."
   })
   @IsNotEmpty()
-  public swapRequestId: string;
+  public swapRequestId!: string;
 }
 
 @JSONSchema({
@@ -327,7 +327,7 @@ export class FetchTokenSwapsWithPaginationResponse extends ChainCallDTO {
 
   @ValidateNested({ each: true })
   @Type(() => TokenSwapRequest)
-  public results: TokenSwapRequest[];
+  public results!: TokenSwapRequest[];
 }
 
 @JSONSchema({
@@ -339,7 +339,7 @@ export class FetchTokenSwapsWithPaginationResponse extends ChainCallDTO {
 })
 export class EnsureTokenSwapIndexingDto extends SubmitCallDTO {
   @ArrayNotEmpty()
-  swapRequestIds: string[];
+  swapRequestIds!: string[];
 }
 
 @JSONSchema({
@@ -348,10 +348,10 @@ export class EnsureTokenSwapIndexingDto extends SubmitCallDTO {
 })
 export class EnsureTokenSwapIndexingResponse extends SubmitCallDTO {
   @IsBoolean()
-  noOp: boolean;
+  noOp!: boolean;
 
   @ArrayMinSize(0)
-  writes: ChainObject[];
+  writes!: ChainObject[];
 }
 
 @JSONSchema({
@@ -370,5 +370,5 @@ export class CleanTokenSwapsDto extends SubmitCallDTO {
 })
 export class CleanTokenSwapsResponse extends SubmitCallDTO {
   @ArrayMinSize(0)
-  deletes: TokenSwapRequest[];
+  deletes!: TokenSwapRequest[];
 }

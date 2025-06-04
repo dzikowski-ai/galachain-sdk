@@ -26,17 +26,17 @@ export class TokenSwapFill extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public swapRequestId: string;
+  public swapRequestId!: string;
 
   @ChainKey({ position: 1 })
   @IsUserAlias()
-  public filledBy: string;
+  public filledBy!: string;
 
   @ChainKey({ position: 2 })
   @IsPositive()
-  public created: number;
+  public created!: number;
 
   @BigNumberIsPositive()
   @BigNumberProperty()
-  public uses: BigNumber;
+  public uses!: BigNumber;
 }

@@ -21,9 +21,9 @@ import { UserAlias } from "./UserAlias";
 export class GrantAllowanceQuantity {
   @IsNotEmpty()
   @IsUserAlias()
-  user: UserAlias;
+  user!: UserAlias;
 
   @BigNumberProperty({ allowInfinity: true })
   @BigNumberIsNotNegative()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 }

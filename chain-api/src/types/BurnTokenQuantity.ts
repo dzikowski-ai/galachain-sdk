@@ -23,9 +23,9 @@ export class BurnTokenQuantity {
   @ValidateNested()
   @Type(() => TokenInstanceKey)
   @IsNotEmpty()
-  tokenInstanceKey: TokenInstanceKey;
+  tokenInstanceKey!: TokenInstanceKey;
 
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 }

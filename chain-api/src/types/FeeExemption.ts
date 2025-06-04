@@ -24,7 +24,7 @@ export class FeeExemption extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  public user: UserAlias;
+  public user!: UserAlias;
 
   @IsOptional()
   @ArrayUnique()

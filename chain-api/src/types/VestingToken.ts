@@ -38,22 +38,22 @@ import { CreateTokenClassDto } from "./token";
 
 export class Allocation {
   @IsString()
-  name: string;
+  name!: string;
 
   @IsUserAlias()
-  owner: UserAlias;
+  owner!: UserAlias;
 
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 
   @Min(0)
   @IsInt()
-  cliff: number;
+  cliff!: number;
 
   @Min(0)
   @IsInt()
-  vestingDays: number;
+  vestingDays!: number;
 }
 
 export class VestingToken extends ChainObject {
@@ -62,32 +62,32 @@ export class VestingToken extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @IsString()
-  vestingName: string;
+  vestingName!: string;
 
   @Min(0)
   @IsInt()
-  startDate: number;
+  startDate!: number;
 
   @ValidateNested({ each: true })
   @Type(() => Allocation)
   @ArrayMinSize(1)
   @ArrayUnique()
-  allocations: Array<Allocation>;
+  allocations!: Array<Allocation>;
 }
 
 // Combines the base VestingToken data with balances for allocations
@@ -95,12 +95,12 @@ export class VestingTokenInfo {
   @ValidateNested()
   @Type(() => VestingToken)
   @IsNotEmpty()
-  vestingToken: VestingToken;
+  vestingToken!: VestingToken;
 
   @ValidateNested({ each: true })
   @Type(() => TokenBalance)
   @ArrayNotEmpty()
-  allocationBalances: Array<TokenBalance>;
+  allocationBalances!: Array<TokenBalance>;
 }
 
 @JSONSchema({
@@ -112,7 +112,7 @@ export class FetchVestingTokenDto extends ChainCallDTO {
   })
   @ValidateNested()
   @Type(() => TokenClassKey)
-  tokenClasses: TokenClassKey;
+  tokenClasses!: TokenClassKey;
 }
 
 @JSONSchema({
@@ -125,20 +125,20 @@ export class CreateVestingTokenDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => CreateTokenClassDto)
   @IsNotEmpty()
-  tokenClass: CreateTokenClassDto;
+  tokenClass!: CreateTokenClassDto;
 
   @JSONSchema({
     description: "Name for the token holds. This name will be applied to all token holds created."
   })
   @IsString()
-  vestingName: string;
+  vestingName!: string;
 
   @JSONSchema({
     description: "Start date timestamp. Cliff and vesting calculations will use this as the starting point."
   })
   @Min(0)
   @IsInt()
-  startDate: number;
+  startDate!: number;
 
   @JSONSchema({
     description: "Allocations."
@@ -147,5 +147,5 @@ export class CreateVestingTokenDto extends SubmitCallDTO {
   @Type(() => Allocation)
   @ArrayMinSize(1)
   @ArrayUnique()
-  allocations: Array<Allocation>;
+  allocations!: Array<Allocation>;
 }

@@ -28,30 +28,30 @@ export class OraclePriceCrossRateAssertion extends ChainObject {
   })
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public oracle: string;
+  public oracle!: string;
 
   @JSONSchema({
     description: "Signing identity making the assertion within the DTO."
   })
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public identity: string;
+  public identity!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public txid: string;
+  public txid!: string;
 
   @JSONSchema({
     description: "Chain key referencing the saved baseToken price assertion"
   })
   @ValidateNested()
   @Type(() => OraclePriceAssertion)
-  public baseTokenCrossRate: OraclePriceAssertion;
+  public baseTokenCrossRate!: OraclePriceAssertion;
 
   @JSONSchema({
     description: "Chain key referencing the saved quote token price assertion"
   })
   @ValidateNested()
   @Type(() => OraclePriceAssertion)
-  public quoteTokenCrossRate: OraclePriceAssertion;
+  public quoteTokenCrossRate!: OraclePriceAssertion;
 }

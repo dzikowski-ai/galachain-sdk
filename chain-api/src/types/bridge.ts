@@ -32,7 +32,7 @@ export class RequestTokenBridgeOutDto extends SubmitCallDTO {
   })
   @EnumProperty(ChainId)
   @IsNotEmpty()
-  destinationChainId: ChainId;
+  destinationChainId!: ChainId;
 
   @JSONSchema({
     description:
@@ -42,7 +42,7 @@ export class RequestTokenBridgeOutDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenInstanceKey)
   @IsNotEmpty()
-  tokenInstance: TokenInstanceKey;
+  tokenInstance!: TokenInstanceKey;
 
   @JSONSchema({
     description: "The quantity of token units to be bridged out."
@@ -50,14 +50,14 @@ export class RequestTokenBridgeOutDto extends SubmitCallDTO {
   @IsNotEmpty()
   @BigNumberIsPositive()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 
   @JSONSchema({
     description: "Recipient address for destination chain"
   })
   @IsString()
   @IsNotEmpty()
-  recipient: string;
+  recipient!: string;
 
   @JSONSchema({
     description:

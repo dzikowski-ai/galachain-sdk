@@ -97,19 +97,19 @@ type UseTokenRequest = ConstructorArgs<UseTokenDto>;
 // Unique case where we need to expose private properties but keep validations
 class TokenBalance implements ConstructorArgs<TokenBalanceDto> {
   @IsUserAlias()
-  owner: UserAlias;
+  owner!: UserAlias;
 
   @IsNotEmpty()
-  collection: string;
+  collection!: string;
 
   @IsNotEmpty()
-  category: string;
+  category!: string;
 
   @IsNotEmpty()
-  type: string;
+  type!: string;
 
   @IsDefined()
-  additionalKey: string;
+  additionalKey!: string;
 
   @IsOptional()
   @BigNumberArrayProperty()
@@ -127,7 +127,7 @@ class TokenBalance implements ConstructorArgs<TokenBalanceDto> {
 
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 }
 
 export {

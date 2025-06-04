@@ -36,24 +36,24 @@ export class FeeCodeDefinition extends ChainObject {
   @ChainKey({ position: 0 })
   @IsString()
   @IsNotEmpty()
-  public feeCode: string;
+  public feeCode!: string;
 
   @ChainKey({ position: 1 })
   @BigNumberIsNotNegative()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public feeThresholdUses: BigNumber;
+  public feeThresholdUses!: BigNumber;
 
   @IsNumber()
-  public feeThresholdTimePeriod: number;
+  public feeThresholdTimePeriod!: number;
 
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public baseQuantity: BigNumber;
+  public baseQuantity!: BigNumber;
 
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public maxQuantity: BigNumber;
+  public maxQuantity!: BigNumber;
 
   @IsOptional()
   @BigNumberIsNotNegative()
@@ -61,10 +61,10 @@ export class FeeCodeDefinition extends ChainObject {
   public maxUses?: BigNumber;
 
   @EnumProperty(FeeAccelerationRateType)
-  public feeAccelerationRateType: FeeAccelerationRateType;
+  public feeAccelerationRateType!: FeeAccelerationRateType;
 
   @BigNumberProperty()
-  public feeAccelerationRate: BigNumber;
+  public feeAccelerationRate!: BigNumber;
 
   @IsOptional()
   @IsBoolean()

@@ -71,22 +71,22 @@ export class LoanOffer extends ChainObject {
   @JSONSchema({ description: "TokenInstance collection. ChainKey property." })
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @JSONSchema({ description: "TokenInstance category. ChainKey property." })
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @JSONSchema({ description: "TokenInstance type. ChainKey property." })
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @JSONSchema({ description: "TokenInstance additionalKey. ChainKey property." })
   @ChainKey({ position: 3 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @JSONSchema({ description: "TokenInstance instance. ChainKey property." })
   @ChainKey({ position: 4 })
@@ -94,17 +94,17 @@ export class LoanOffer extends ChainObject {
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @JSONSchema({ description: "Chain identity of the NFT owner that offered the loan. ChainKey property." })
   @ChainKey({ position: 5 })
   @IsUserAlias()
-  public owner: string;
+  public owner!: string;
 
   @JSONSchema({ description: "Timestamp tracking when the offer was made. ChainKey property." })
   @ChainKey({ position: 6 })
   @IsNotEmpty()
-  public created: number;
+  public created!: number;
 
   @JSONSchema({
     description:
@@ -113,7 +113,7 @@ export class LoanOffer extends ChainObject {
       "to a small group of known users."
   })
   @ChainKey({ position: 7 })
-  public id: number;
+  public id!: number;
 
   @JSONSchema({
     description: "Registrar chain identity. For p2p loans, equal to the " + "Loan.NULL_REGISTRAR_KEY."
@@ -129,7 +129,7 @@ export class LoanOffer extends ChainObject {
 
   @JSONSchema({ description: "LoanStatus, e.g. Open, Contracted, Fulfilled, Cancelled." })
   @IsNotEmpty()
-  public status: LoanStatus;
+  public status!: LoanStatus;
 
   @JSONSchema({ description: "Optional reward property, available for use by consumer implementations." })
   @ValidateNested({ each: true })
@@ -144,17 +144,17 @@ export class LoanOffer extends ChainObject {
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public uses: BigNumber;
+  public uses!: BigNumber;
 
   @JSONSchema({ description: "Number of uses spent." })
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public usesSpent: BigNumber;
+  public usesSpent!: BigNumber;
 
   @Min(0)
   @IsInt()
-  public expires: number;
+  public expires!: number;
 
   @Exclude()
   public static INDEX_KEY = "GCTLOR";
@@ -206,35 +206,35 @@ export class Lender extends ChainObject {
   @JSONSchema({ description: "Client identity id for Lender that made the referenced LoanOffer." })
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  id: string;
+  id!: string;
 
   @JSONSchema({ description: "LoanStatus. ChainKey Property." })
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  status: LoanStatus;
+  status!: LoanStatus;
 
   @JSONSchema({ description: "LoanOffer chain key." })
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  offer: string;
+  offer!: string;
 
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @Exclude()
   public static INDEX_KEY = "GCTLLR";
@@ -257,22 +257,22 @@ export class Lender extends ChainObject {
 export class LoanAgreement extends ChainObject {
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  owner: string;
+  owner!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  offer: string;
+  offer!: string;
 
   @ChainKey({ position: 2 })
-  loan: string;
+  loan!: string;
 
   @ChainKey({ position: 3 })
   @IsUserAlias()
-  borrower: string;
+  borrower!: string;
 
   @ChainKey({ position: 4 })
   @IsNotEmpty()
-  created: number;
+  created!: number;
 
   @Exclude()
   public static INDEX_KEY = "GCTLLA";
@@ -284,48 +284,48 @@ export class LoanAgreement extends ChainObject {
 export class Loan extends ChainObject {
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public registrar: string;
+  public registrar!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 4 })
   @IsNotEmpty()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 5 })
   @IsNotEmpty()
   @BigNumberIsInteger()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public instance: BigNumber;
+  public instance!: BigNumber;
 
   @ChainKey({ position: 6 })
   @IsNotEmpty()
-  public start: number;
+  public start!: number;
 
-  public end: number;
+  public end!: number;
 
   @IsUserAlias()
-  public owner: string;
+  public owner!: string;
 
   @IsNotEmpty()
-  public borrower: string;
+  public borrower!: string;
 
   @IsNotEmpty()
-  public status: LoanStatus;
+  public status!: LoanStatus;
 
   @IsNotEmpty()
-  public closedBy: LoanClosedBy;
+  public closedBy!: LoanClosedBy;
 
   @Exclude()
   public static INDEX_KEY = "GCTLLN";

@@ -61,14 +61,14 @@ export class LockTokenDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenInstanceKey)
   @IsNotEmpty()
-  tokenInstance: TokenInstanceKey;
+  tokenInstance!: TokenInstanceKey;
 
   @JSONSchema({
     description: "The quantity of token units to be locked."
   })
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 
   @JSONSchema({
     description: "Allowance ids to be used on lock (optional)."
@@ -110,7 +110,7 @@ export class LockTokensDto extends SubmitCallDTO {
   @ArrayNotEmpty()
   @Type(() => LockTokenQuantity)
   @ValidateNested({ each: true })
-  tokenInstances: Array<LockTokenQuantity>;
+  tokenInstances!: Array<LockTokenQuantity>;
 
   @JSONSchema({
     description: "Allowance ids to be used on lock (optional)."
@@ -148,7 +148,7 @@ export class UnlockTokenDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenInstanceKey)
   @IsNotEmpty()
-  tokenInstance: TokenInstanceKey;
+  tokenInstance!: TokenInstanceKey;
 
   @JSONSchema({
     description: "Optional quantity for unlocking fungible tokens. Not for use with NFT token instances."
@@ -187,7 +187,7 @@ export class UnlockTokensDto extends SubmitCallDTO {
   @ArrayNotEmpty()
   @Type(() => LockTokenQuantity)
   @ValidateNested({ each: true })
-  tokenInstances: Array<LockTokenQuantity>;
+  tokenInstances!: Array<LockTokenQuantity>;
 
   @JSONSchema({
     description:

@@ -29,12 +29,12 @@ export class UniqueTransaction extends ChainObject {
   })
   @IsString()
   @IsNotEmpty()
-  uniqueKey: string;
+  uniqueKey!: string;
 
   @IsNotEmpty()
-  created: number;
+  created!: number;
 
   @IsString()
   @IsNotEmpty()
-  transactionId: string;
+  transactionId!: string;
 }

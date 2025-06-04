@@ -25,48 +25,48 @@ import { UserAlias } from "./UserAlias";
 export class TokenSwapRequest extends ChainObject {
   @ChainKey({ position: 0 })
   @IsNumber()
-  public created: number;
+  public created!: number;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public txid: string;
+  public txid!: string;
 
   @IsNotEmpty()
-  public swapRequestId: string;
+  public swapRequestId!: string;
 
   @ValidateNested({ each: true })
   @Type(() => TokenInstanceQuantity)
   @ArrayNotEmpty()
-  public offered: Array<TokenInstanceQuantity>;
+  public offered!: Array<TokenInstanceQuantity>;
 
   @ValidateNested({ each: true })
   @Type(() => TokenInstanceQuantity)
   @ArrayNotEmpty()
-  public wanted: Array<TokenInstanceQuantity>;
+  public wanted!: Array<TokenInstanceQuantity>;
 
   @IsOptional()
   @IsUserAlias()
   public offeredTo?: UserAlias;
 
   @IsUserAlias()
-  public offeredBy: UserAlias;
+  public offeredBy!: UserAlias;
 
   @IsNotEmpty() // i.e. not null/undefined, it can be an empty array
-  public fillIds: Array<string>;
+  public fillIds!: Array<string>;
 
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public uses: BigNumber;
+  public uses!: BigNumber;
 
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public usesSpent: BigNumber;
+  public usesSpent!: BigNumber;
 
   @Min(0)
   @IsInt()
-  public expires: number;
+  public expires!: number;
 
   @Exclude()
   public static INDEX_KEY = "GCTSR";

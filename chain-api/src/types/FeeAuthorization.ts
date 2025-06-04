@@ -25,26 +25,26 @@ export class FeeAuthorization extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  public authority: UserAlias;
+  public authority!: UserAlias;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public year: string;
+  public year!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public month: string;
+  public month!: string;
 
   @ChainKey({ position: 3 })
   @IsNotEmpty()
-  public day: string;
+  public day!: string;
 
   @ChainKey({ position: 4 })
   @IsNotEmpty()
-  public txId: string;
+  public txId!: string;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 }

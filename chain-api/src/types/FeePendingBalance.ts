@@ -25,10 +25,10 @@ export class FeePendingBalance extends ChainObject {
 
   @ChainKey({ position: 0 })
   @IsUserAlias()
-  public owner: UserAlias;
+  public owner!: UserAlias;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 }

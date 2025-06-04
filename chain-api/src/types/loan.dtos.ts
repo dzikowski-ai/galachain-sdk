@@ -89,7 +89,7 @@ export class OfferLoanDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenInstanceQueryKey)
   @IsNotEmpty()
-  public tokens: TokenInstanceQueryKey;
+  public tokens!: TokenInstanceQueryKey;
 
   @JSONSchema({
     description:
@@ -109,7 +109,7 @@ export class OfferLoanDto extends SubmitCallDTO {
   @BigNumberIsPositive()
   @BigNumberIsInteger()
   @BigNumberProperty()
-  public uses: BigNumber;
+  public uses!: BigNumber;
 
   @JSONSchema({
     description:
@@ -139,26 +139,26 @@ export class LoanOfferResDto extends SubmitCallDTO {
   })
   @ValidateNested()
   @Type(() => LoanOffer)
-  offer: LoanOffer;
+  offer!: LoanOffer;
 
   @JSONSchema({
     description: "The Lender data written to chain, corresponding to the created LoanOffer."
   })
   @ValidateNested()
   @Type(() => Lender)
-  lender: Lender;
+  lender!: Lender;
 }
 
 export class AcceptLoanOfferDto extends SubmitCallDTO {
   @IsNotEmpty()
-  offer: string;
+  offer!: string;
 
   @IsUserRef()
-  borrower: string;
+  borrower!: string;
 
   @ValidateNested()
   @Type(() => TokenInstanceKey)
-  token: TokenInstanceKey;
+  token!: TokenInstanceKey;
 }
 
 export class FetchLoanOffersDto extends ChainCallDTO {
@@ -201,9 +201,9 @@ export class FetchLoansDto extends ChainCallDTO {
 
 export class CloseLoanDto extends SubmitCallDTO {
   @IsNotEmpty()
-  loan: string;
+  loan!: string;
 
   @IsNotEmpty()
   @EnumProperty(LoanStatus)
-  status: LoanStatus;
+  status!: LoanStatus;
 }

@@ -53,7 +53,7 @@ export class MintTokenDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenClassKey)
   @IsNotEmpty()
-  tokenClass: TokenClassKey;
+  tokenClass!: TokenClassKey;
 
   @JSONSchema({
     description: "The owner of minted tokens. If the value is missing, chaincode caller is used."
@@ -68,7 +68,7 @@ export class MintTokenDto extends SubmitCallDTO {
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 
   @IsOptional()
   @Type(() => AllowanceKey)
@@ -88,7 +88,7 @@ export class MintTokenWithAllowanceDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenClassKey)
   @IsNotEmpty()
-  tokenClass: TokenClassKey;
+  tokenClass!: TokenClassKey;
 
   @JSONSchema({
     description: "The owner of minted tokens. If the value is missing, chaincode caller is used."
@@ -103,7 +103,7 @@ export class MintTokenWithAllowanceDto extends SubmitCallDTO {
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  tokenInstance: BigNumber;
+  tokenInstance!: BigNumber;
 
   @JSONSchema({
     description: "How many units of Fungible/NonFungible Token will be minted."
@@ -111,7 +111,7 @@ export class MintTokenWithAllowanceDto extends SubmitCallDTO {
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 }
 
 @JSONSchema({
@@ -129,7 +129,7 @@ export class BatchMintTokenDto extends SubmitCallDTO {
   @Type(() => MintTokenDto)
   @ArrayNotEmpty()
   @ArrayMaxSize(BatchMintTokenDto.MAX_ARR_SIZE)
-  mintDtos: MintTokenDto[];
+  mintDtos!: MintTokenDto[];
 }
 
 /**
@@ -157,7 +157,7 @@ export class HighThroughputMintTokenDto extends SubmitCallDTO {
   @ValidateNested()
   @Type(() => TokenClassKey)
   @IsNotEmpty()
-  tokenClass: TokenClassKey;
+  tokenClass!: TokenClassKey;
 
   @JSONSchema({
     description: "The owner of minted tokens. If the value is missing, chaincode caller is used."
@@ -172,7 +172,7 @@ export class HighThroughputMintTokenDto extends SubmitCallDTO {
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  quantity: BigNumber;
+  quantity!: BigNumber;
 
   @IsOptional()
   @Type(() => AllowanceKey)
@@ -192,7 +192,7 @@ export class FulfillMintDto extends SubmitCallDTO {
   @ArrayNotEmpty()
   @ArrayMaxSize(FulfillMintDto.MAX_ARR_SIZE)
   @ArrayUniqueObjects("id")
-  requests: MintRequestDto[];
+  requests!: MintRequestDto[];
 }
 
 @JSONSchema({
@@ -203,31 +203,31 @@ export class FetchMintRequestsDto extends ChainCallDTO {
     description: "Token collection."
   })
   @IsNotEmpty()
-  collection: string;
+  collection!: string;
 
   @JSONSchema({
     description: "Token category."
   })
   @IsNotEmpty()
-  category: string;
+  category!: string;
 
   @JSONSchema({
     description: "Token type."
   })
   @IsNotEmpty()
-  type: string;
+  type!: string;
 
   @JSONSchema({
     description: "Token additionalKey."
   })
   @IsNotEmpty()
-  additionalKey: string;
+  additionalKey!: string;
 
   @IsNotEmpty()
-  startTimestamp: number;
+  startTimestamp!: number;
 
   @IsNotEmpty()
-  endTimestamp: number;
+  endTimestamp!: number;
 }
 
 @JSONSchema({
@@ -238,25 +238,25 @@ export class FetchTokenSupplyDto extends ChainCallDTO {
     description: "Token collection."
   })
   @IsNotEmpty()
-  collection: string;
+  collection!: string;
 
   @JSONSchema({
     description: "Token category."
   })
   @IsNotEmpty()
-  category: string;
+  category!: string;
 
   @JSONSchema({
     description: "Token type."
   })
   @IsNotEmpty()
-  type: string;
+  type!: string;
 
   @JSONSchema({
     description: "Token additionalKey."
   })
   @IsNotEmpty()
-  additionalKey: string;
+  additionalKey!: string;
 }
 
 @JSONSchema({
@@ -267,7 +267,7 @@ export class FetchTokenSupplyResponse extends ChainCallDTO {
     description: "Total known supply at time of chaincode execution."
   })
   @BigNumberProperty()
-  supply: BigNumber;
+  supply!: BigNumber;
 }
 
 @JSONSchema({
@@ -284,32 +284,32 @@ export class PatchMintAllowanceRequestDto extends SubmitCallDTO {
     description: "Token collection."
   })
   @IsNotEmpty()
-  collection: string;
+  collection!: string;
 
   @JSONSchema({
     description: "Token category."
   })
   @IsNotEmpty()
-  category: string;
+  category!: string;
 
   @JSONSchema({
     description: "Token type."
   })
   @IsNotEmpty()
-  type: string;
+  type!: string;
 
   @JSONSchema({
     description: "Token additionalKey."
   })
   @IsNotEmpty()
-  additionalKey: string;
+  additionalKey!: string;
 
   @JSONSchema({
     description: "The total known mint allowances count."
   })
   @IsNotEmpty()
   @BigNumberProperty()
-  totalKnownMintAllowancesCount: BigNumber;
+  totalKnownMintAllowancesCount!: BigNumber;
 }
 
 @JSONSchema({
@@ -326,32 +326,32 @@ export class PatchMintRequestDto extends SubmitCallDTO {
     description: "Token collection."
   })
   @IsNotEmpty()
-  collection: string;
+  collection!: string;
 
   @JSONSchema({
     description: "Token category."
   })
   @IsNotEmpty()
-  category: string;
+  category!: string;
 
   @JSONSchema({
     description: "Token type."
   })
   @IsNotEmpty()
-  type: string;
+  type!: string;
 
   @JSONSchema({
     description: "Token additionalKey."
   })
   @IsNotEmpty()
-  additionalKey: string;
+  additionalKey!: string;
 
   @JSONSchema({
     description: "The total known mint allowances count."
   })
   @IsNotEmpty()
   @BigNumberProperty()
-  totalKnownMintsCount: BigNumber;
+  totalKnownMintsCount!: BigNumber;
 }
 
 @JSONSchema({
@@ -362,25 +362,25 @@ export class TokenMintConfigurationDto extends SubmitCallDTO {
     description: "Token collection."
   })
   @IsNotEmpty()
-  collection: string;
+  collection!: string;
 
   @JSONSchema({
     description: "Token category."
   })
   @IsNotEmpty()
-  category: string;
+  category!: string;
 
   @JSONSchema({
     description: "Token type."
   })
   @IsNotEmpty()
-  type: string;
+  type!: string;
 
   @JSONSchema({
     description: "Token additionalKey."
   })
   @IsDefined()
-  additionalKey: string;
+  additionalKey!: string;
 
   @JSONSchema({
     description:
@@ -435,34 +435,34 @@ export class FetchTokenMintConfigurationsDto extends ChainCallDTO {
   })
   @IsOptional()
   @IsNotEmpty()
-  collection: string;
+  collection!: string;
 
   @JSONSchema({
     description: "Token Class category. Optional, but required if collection is provided."
   })
   @ValidateIf((c) => !!c.collection)
   @IsNotEmpty()
-  category: string;
+  category!: string;
 
   @JSONSchema({
     description: "Token Class type. Optional, but required if category is provided."
   })
   @ValidateIf((c) => !!c.category)
   @IsNotEmpty()
-  type: string;
+  type!: string;
 
   @JSONSchema({
     description: "Token Class additionalKey. Optional, but required if type is provided. "
   })
   @ValidateIf((c) => !!c.type)
   @IsNotEmpty()
-  additionalKey: string;
+  additionalKey!: string;
 
   @JSONSchema({
     description: "Bookmark for paginated queries. Provide the empty string for the first page of results."
   })
   @IsString()
-  bookmark: string;
+  bookmark!: string;
 
   @JSONSchema({
     description: "Page size used to limit the results returned. Default: 100. Max: 10000."
@@ -479,22 +479,22 @@ export class FetchTokenMintConfigurationsResponse extends ChainCallDTO {
   @JSONSchema({
     description: "Results set of TokenMintConfiguration entries."
   })
-  results: TokenMintConfiguration[];
+  results!: TokenMintConfiguration[];
 
   @IsString()
-  bookmark: string;
+  bookmark!: string;
 }
 
 export class DeleteTokenMintConfigurationDto extends SubmitCallDTO {
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 }

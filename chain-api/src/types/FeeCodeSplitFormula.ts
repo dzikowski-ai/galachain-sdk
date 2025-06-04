@@ -33,7 +33,7 @@ export class FeeCodeTransferPercentage extends ChainObject {
       "portion of the fee should be transferred."
   })
   @IsUserAlias()
-  transferToUser: UserAlias;
+  transferToUser!: UserAlias;
 
   @JSONSchema({
     description:
@@ -44,21 +44,21 @@ export class FeeCodeTransferPercentage extends ChainObject {
   @IsNumber()
   @Min(0)
   @Max(1)
-  transferPercentage: number;
+  transferPercentage!: number;
 }
 
 export class FeeCodeTransferQuantity extends ChainObject {
   @IsNotEmpty()
-  transferToUser: UserAlias;
+  transferToUser!: UserAlias;
 
   @IsNumber()
   @Min(0)
   @Max(1)
-  transferPercentage: number;
+  transferPercentage!: number;
 
   @IsBigNumber()
   @BigNumberIsPositive()
-  transferQuantity: BigNumber;
+  transferQuantity!: BigNumber;
 }
 
 export class FeeCodeSplitFormula extends ChainObject {
@@ -67,17 +67,17 @@ export class FeeCodeSplitFormula extends ChainObject {
   @ChainKey({ position: 0 })
   @IsString()
   @IsNotEmpty()
-  public feeCode: string;
+  public feeCode!: string;
 
   @IsNumber()
   @Min(0)
   @Max(1)
-  public burnPercentage: number;
+  public burnPercentage!: number;
 
   @ArrayMinSize(0)
   @ValidateNested({ each: true })
   @Type(() => FeeCodeTransferPercentage)
-  public transferPercentages: FeeCodeTransferPercentage[];
+  public transferPercentages!: FeeCodeTransferPercentage[];
 
   @Exclude()
   public calculateAmounts(

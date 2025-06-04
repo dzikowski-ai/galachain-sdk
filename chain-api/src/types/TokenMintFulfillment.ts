@@ -25,42 +25,42 @@ export class TokenMintFulfillment extends ChainObject {
   public static INDEX_KEY = "GCTMF";
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public collection: string;
+  public collection!: string;
 
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public category: string;
+  public category!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public type: string;
+  public type!: string;
 
   @ChainKey({ position: 3 })
   @IsDefined()
-  public additionalKey: string;
+  public additionalKey!: string;
 
   @ChainKey({ position: 4 })
   @IsUserAlias()
-  public requestor: UserAlias;
+  public requestor!: UserAlias;
 
   @ChainKey({ position: 5 })
   @IsNotEmpty()
-  public requestCreated: number;
+  public requestCreated!: number;
 
   @IsUserAlias()
-  public owner: UserAlias;
+  public owner!: UserAlias;
 
   @IsNotEmpty()
   @BigNumberIsNotNegative()
   @BigNumberProperty()
-  public quantity: BigNumber;
+  public quantity!: BigNumber;
 
   @IsNotEmpty()
-  public state: TokenMintStatus;
+  public state!: TokenMintStatus;
 
   @IsNotEmpty()
-  public id: string;
+  public id!: string;
 
   @IsNotEmpty()
-  public created: number;
+  public created!: number;
 }

@@ -34,18 +34,18 @@ export class OracleBridgeFeeAssertion extends ChainObject {
   })
   @ChainKey({ position: 0 })
   @IsNotEmpty()
-  public oracle: string;
+  public oracle!: string;
 
   @JSONSchema({
     description: "Signing identity making the assertion contained within the DTO."
   })
   @ChainKey({ position: 1 })
   @IsNotEmpty()
-  public signingIdentity: string;
+  public signingIdentity!: string;
 
   @ChainKey({ position: 2 })
   @IsNotEmpty()
-  public txid: string;
+  public txid!: string;
 
   @JSONSchema({
     description: "Exchange Rate Price Assertion used to calculate Gas Fee"
@@ -70,7 +70,7 @@ export class OracleBridgeFeeAssertion extends ChainObject {
   })
   @Min(0)
   @Max(32)
-  public galaDecimals: number;
+  public galaDecimals!: number;
 
   @JSONSchema({
     description:
@@ -78,7 +78,7 @@ export class OracleBridgeFeeAssertion extends ChainObject {
   })
   @ValidateNested()
   @Type(() => TokenClassKey)
-  public bridgeToken: TokenClassKey;
+  public bridgeToken!: TokenClassKey;
 
   @JSONSchema({
     description:
@@ -86,19 +86,19 @@ export class OracleBridgeFeeAssertion extends ChainObject {
       "included ?nft=true. Otherwise false."
   })
   @IsBoolean()
-  public bridgeTokenIsNonFungible: boolean;
+  public bridgeTokenIsNonFungible!: boolean;
 
   @JSONSchema({
     description: "Estimated number of gas units required for the transaction."
   })
   @BigNumberProperty()
-  public estimatedTxFeeUnitsTotal: BigNumber;
+  public estimatedTxFeeUnitsTotal!: BigNumber;
 
   @JSONSchema({
     description: "Estimated price per unit of gas, as retrieved approximately at the time of assertion."
   })
   @BigNumberProperty()
-  public estimatedPricePerTxFeeUnit: BigNumber;
+  public estimatedPricePerTxFeeUnit!: BigNumber;
 
   @JSONSchema({
     description:
@@ -113,7 +113,7 @@ export class OracleBridgeFeeAssertion extends ChainObject {
       "the result to the `galaExchangeRate.externalQuoteToken unit denomination.`"
   })
   @BigNumberProperty()
-  public estimatedTotalTxFeeInExternalToken: BigNumber;
+  public estimatedTotalTxFeeInExternalToken!: BigNumber;
 
   @JSONSchema({
     description:
@@ -121,7 +121,7 @@ export class OracleBridgeFeeAssertion extends ChainObject {
       "destination chain, converted to $GALA, for payment on GalaChain"
   })
   @BigNumberProperty()
-  public estimatedTotalTxFeeInGala: BigNumber;
+  public estimatedTotalTxFeeInGala!: BigNumber;
 
   @JSONSchema({
     description:
@@ -129,5 +129,5 @@ export class OracleBridgeFeeAssertion extends ChainObject {
       "was calculated and/or estimated."
   })
   @IsNumber()
-  timestamp: number;
+  timestamp!: number;
 }
