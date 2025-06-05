@@ -43,18 +43,20 @@ import { GalaChainContext } from "../types";
 import { getObjectsByPartialCompositeKey, putChainObject } from "../utils";
 
 export class SuperheroDto extends SubmitCallDTO {
-  public name!: string;
+  public name: string;
 
   @IsPositive()
-  public age!: number;
+  public age: number;
 
-  public static create(name: string, age: number) {
-    const dto = new SuperheroDto();
-    dto.name = name;
-    dto.age = age;
-    dto.uniqueKey = randomUniqueKey();
+  constructor(name: string, age: number, uniqueKey: string) {
+    super();
+    this.name = name;
+    this.age = age;
+    this.uniqueKey = uniqueKey;
+  }
 
-    return dto;
+  public static create(name: string, age: number): SuperheroDto {
+    return new SuperheroDto(name, age, randomUniqueKey());
   }
 }
 
@@ -80,14 +82,22 @@ export class Superhero extends ChainObject {
 
 export class KVDto extends ChainCallDTO {
   @IsNotEmpty()
-  public key!: string;
+  public key: string;
 
   public value?: string;
+
+  constructor(key: string, value?: string) {
+    super();
+    this.key = key;
+    if (value !== undefined) {
+      this.value = value;
+    }
+  }
 }
 
 export class NestedKVDto extends ChainCallDTO {
   @IsNotEmpty()
-  public key!: string;
+  public key: string;
 
   public text?: string;
 
@@ -96,6 +106,11 @@ export class NestedKVDto extends ChainCallDTO {
   public counter?: number;
 
   public array?: Array<unknown>;
+
+  constructor(key: string) {
+    super();
+    this.key = key;
+  }
 }
 
 export default class TestGalaContract extends GalaContract {
